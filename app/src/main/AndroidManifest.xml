@@ -14,10 +14,10 @@
         android:roundIcon="@mipmap/u3_logo"
         android:supportsRtl="true"
         android:theme="@style/AppThemeDua">
-        <activity android:name=".ActivitySyaratKetentuan.ui.SyaratKetentuanActivity"></activity>
-        <activity android:name=".ActivityHubungi.ui.HubungiActivity" />
-        <activity android:name=".ActivitySaran.ui.SaranActivity" />
-        <activity android:name=".ActivityTentangAplikasi.ui.TentangAppActivity" />
+        <activity android:name=".ActivitySyaratKetentuan.View.SyaratKetentuanActivity"></activity>
+        <activity android:name=".ActivityHubungi.View.HubungiActivity" />
+        <activity android:name=".ActivitySaran.View.SaranActivity" />
+        <activity android:name=".ActivityTentangAplikasi.View.TentangAppActivity" />
         <activity android:name=".XsetupImage.SetupImageActivity" />
         <activity android:name=".ActivityOrderDetail.View.OrderDetailActivity" />
 
@@ -35,14 +35,14 @@
         </activity>
 
         <activity android:name=".ActivityOrder.express.ui.ExpressActivity" />
-        <activity android:name=".ActivityOrder.kilat.ui.KilatActivity" />
+        <activity android:name=".ActivityOrder.kilat.View.KilatActivity" />
         <activity android:name=".ActivityEditProfile.View.EditProfileActivity" />
         <activity android:name=".ActivityMain.MainActivity" />
-        <activity android:name=".ActivityLogin.ui.LoginActivity" />
-        <activity android:name=".ActivityOrder.biasa.ui.BiasaActivity" />
-        <activity android:name=".ActivityRegister.ui.RegisterActivity" />
-        <activity android:name=".ActivityForgetPass.ui.ForgetPassActivity" />
-        <activity android:name=".ActivitySetup.ui.SetupActivity" />
+        <activity android:name=".ActivityLogin.View.LoginActivity" />
+        <activity android:name=".ActivityOrder.biasa.View.BiasaActivity" />
+        <activity android:name=".ActivityRegister.View.RegisterActivity" />
+        <activity android:name=".ActivityForgetPass.View.ForgetPassActivity" />
+        <activity android:name=".ActivitySetup.View.SetupActivity" />
         <activity
             android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
             android:theme="@style/Base.Theme.AppCompat" />

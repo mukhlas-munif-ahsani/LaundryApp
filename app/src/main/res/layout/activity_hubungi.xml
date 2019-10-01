@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/putih"
     android:orientation="vertical"
-    tools:context=".ActivityHubungi.ui.HubungiActivity">
+    tools:context=".ActivityHubungi.View.HubungiActivity">
 
     <ProgressBar
         android:id="@+id/hubungi_progress"

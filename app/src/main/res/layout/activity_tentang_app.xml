@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/putih"
     android:orientation="vertical"
-    tools:context=".ActivityTentangAplikasi.ui.TentangAppActivity">
+    tools:context=".ActivityTentangAplikasi.View.TentangAppActivity">
 
     <ProgressBar
         android:id="@+id/tentang_progress"

@@ -4,8 +4,6 @@ import android.content.Intent;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.fragment.app.Fragment;
@@ -16,15 +14,13 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.tiunida.laundry0.FragmentHome.OrderFragment;
 import com.tiunida.laundry0.R;
 import com.tiunida.laundry0.FragmentHistory.HistoryFragment;
-import com.tiunida.laundry0.ActivityLogin.ui.LoginActivity;
-import com.tiunida.laundry0.FragmentProfile.ui.ProfileFragment;
-import com.tiunida.laundry0.ActivitySetup.ui.SetupActivity;
+import com.tiunida.laundry0.ActivityLogin.View.LoginActivity;
+import com.tiunida.laundry0.FragmentProfile.View.ProfileFragment;
+import com.tiunida.laundry0.ActivitySetup.View.SetupActivity;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 

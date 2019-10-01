@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/putih"
     android:orientation="vertical"
-    tools:context=".ActivitySyaratKetentuan.ui.SyaratKetentuanActivity">
+    tools:context=".ActivitySyaratKetentuan.View.SyaratKetentuanActivity">
 
     <ProgressBar
         android:id="@+id/sayarat_ketentuan_progress"

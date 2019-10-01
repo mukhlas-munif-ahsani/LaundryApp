@@ -30,7 +30,7 @@ import com.google.firebase.storage.UploadTask;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 import com.tiunida.laundry0.R;
-import com.tiunida.laundry0.FragmentProfile.ui.ProfileFragment;
+import com.tiunida.laundry0.FragmentProfile.View.ProfileFragment;
 
 import java.util.HashMap;
 import java.util.Map;

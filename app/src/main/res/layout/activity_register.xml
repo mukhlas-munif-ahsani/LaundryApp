@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/putih"
-    tools:context=".ActivityRegister.ui.RegisterActivity">
+    tools:context=".ActivityRegister.View.RegisterActivity">
 
     <ProgressBar
         android:id="@+id/register_progress"

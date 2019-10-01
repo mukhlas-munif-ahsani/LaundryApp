@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -14,9 +13,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.tiunida.laundry0.ActivityLogin.ui.LoginActivity;
+import com.tiunida.laundry0.ActivityLogin.View.LoginActivity;
 import com.tiunida.laundry0.ActivityMain.MainActivity;
-import com.tiunida.laundry0.ActivitySetup.ui.SetupActivity;
+import com.tiunida.laundry0.ActivitySetup.View.SetupActivity;
 import com.tiunida.laundry0.R;
 
 public class SplashScreenActivity extends AppCompatActivity {

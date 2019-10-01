@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/putih"
-    tools:context=".ActivitySaran.ui.SaranActivity">
+    tools:context=".ActivitySaran.View.SaranActivity">
 
     <ProgressBar
         android:id="@+id/saran_progress"
