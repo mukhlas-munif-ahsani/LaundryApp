@@ -1,4 +1,4 @@
-package com.tiunida.laundry0.ActivityOrder.express.ui;
+package com.tiunida.laundry0.ActivityOrder.express.View;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;

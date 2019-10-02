@@ -10,7 +10,7 @@ import com.tiunida.laundry0.EventBus.EventBus;
 import com.tiunida.laundry0.EventBus.GreenRobotEventBus;
 import com.tiunida.laundry0.ActivityOrder.express.events.ExpressEventsAkad;
 import com.tiunida.laundry0.ActivityOrder.express.events.ExpressEventsProfile;
-import com.tiunida.laundry0.ActivityOrder.express.ui.ExpressViewMvp;
+import com.tiunida.laundry0.ActivityOrder.express.View.ExpressViewMvp;
 
 import org.greenrobot.eventbus.Subscribe;
 

@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ActivityOrder.express.ui.ExpressActivity" />
+        <activity android:name=".ActivityOrder.express.View.ExpressActivity" />
         <activity android:name=".ActivityOrder.kilat.View.KilatActivity" />
         <activity android:name=".ActivityEditProfile.View.EditProfileActivity" />
         <activity android:name=".ActivityMain.MainActivity" />

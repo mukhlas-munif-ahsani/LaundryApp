@@ -12,7 +12,7 @@ import android.widget.Button;
 
 import com.tiunida.laundry0.R;
 import com.tiunida.laundry0.ActivityOrder.biasa.View.BiasaActivity;
-import com.tiunida.laundry0.ActivityOrder.express.ui.ExpressActivity;
+import com.tiunida.laundry0.ActivityOrder.express.View.ExpressActivity;
 import com.tiunida.laundry0.ActivityOrder.kilat.View.KilatActivity;
 
 import butterknife.BindView;

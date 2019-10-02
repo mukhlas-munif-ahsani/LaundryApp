@@ -1,4 +1,4 @@
-package com.tiunida.laundry0.ActivityOrder.express.ui;
+package com.tiunida.laundry0.ActivityOrder.express.View;
 
 public interface ExpressViewMvp {
     void showMessage(String message);
