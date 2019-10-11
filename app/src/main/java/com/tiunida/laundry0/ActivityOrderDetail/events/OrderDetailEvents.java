@@ -5,12 +5,22 @@ public class OrderDetailEvents {
     public static final int onInputSuccess = 1;
     public static final int onGetDataSuccess = 2;
     public static final int onGetDataError = 3;
+    public static final int onUpdateDataSuccess = 4;
+    public static final int onUpdateDataError = 5;
 
     private int eventType;
     private String errorMessage;
 
     private String dataWeight, dataPrice, dataPriceDiskon, dataDiskon;
-    private String dataAccept, dataOnProses, dataDone, dataPaid, dataDelivered;
+    private String dataAccept;
+    private String dataOnProses;
+    private String dataDone;
+    private String dataPaid;
+
+    private String dataOrderId;
+    private String dataPaidConfirm;
+    private String dataDelivered;
+    private String dataDeliveredConfirm;
     private String dataJenis;
     private String dataDesc;
     private String dataTimeNow;
@@ -25,6 +35,17 @@ public class OrderDetailEvents {
     private String dataSarungTangan, dataSapuTangan;
     private String dataCelana, dataCelanaDalam, dataCelanaPendek, dataSrung, dataCelanaOlahraga, dataRok, dataCelanaLevis, dataKaosKaki;
     private String dataJasAlmamater, dataJas, dataSelimutBesar, dataSelimutKecil, dataBagCover, dataGordengKecil, dataGordengBesar, dataSepatu, dataBantal, dataTasKecil, dataTasBesar, dataSpreiKecil, dataSpreiBesar;
+
+    public OrderDetailEvents() {
+    }
+
+    public String getDataOrderId() {
+        return dataOrderId;
+    }
+
+    public void setDataOrderId(String dataOrderId) {
+        this.dataOrderId = dataOrderId;
+    }
 
     public String getDataWeight() {
         return dataWeight;
@@ -90,12 +111,28 @@ public class OrderDetailEvents {
         this.dataPaid = dataPaid;
     }
 
+    public String getDataPaidConfirm() {
+        return dataPaidConfirm;
+    }
+
+    public void setDataPaidConfirm(String dataPaidConfirm) {
+        this.dataPaidConfirm = dataPaidConfirm;
+    }
+
     public String getDataDelivered() {
         return dataDelivered;
     }
 
     public void setDataDelivered(String dataDelivered) {
         this.dataDelivered = dataDelivered;
+    }
+
+    public String getDataDeliveredConfirm() {
+        return dataDeliveredConfirm;
+    }
+
+    public void setDataDeliveredConfirm(String dataDeliveredConfirm) {
+        this.dataDeliveredConfirm = dataDeliveredConfirm;
     }
 
     public String getDataJenis() {

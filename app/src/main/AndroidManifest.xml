@@ -9,9 +9,9 @@
     <application
         android:allowBackup="true"
         android:fullBackupContent="true"
-        android:icon="@mipmap/u3_logo"
+        android:icon="@mipmap/laundry_u3_app"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/u3_logo"
+        android:roundIcon="@mipmap/laundry_u3_app"
         android:supportsRtl="true"
         android:theme="@style/AppThemeDua">
         <activity android:name=".ActivitySyaratKetentuan.View.SyaratKetentuanActivity"></activity>

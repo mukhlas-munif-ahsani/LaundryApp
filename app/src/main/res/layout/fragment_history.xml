@@ -7,7 +7,7 @@
     android:background="@color/putih"
     android:orientation="vertical"
     android:tag="historyFragment"
-    tools:context=".FragmentHistory.HistoryFragment">
+    tools:context=".FragmentHistory.View.HistoryFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

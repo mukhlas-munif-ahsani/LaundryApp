@@ -46,6 +46,18 @@ public interface OrderDetailViewMvp {
 
     void setDeliveredIndicatorUnCheck();
 
+    void setPaidBtnDisable();
+
+    void setPaidBtnEnable();
+
+    void setDeliverBtnDisable();
+
+    void setDeliverBtnEnable();
+
+    void setConfirmPaidBtnTxt(String txt);
+
+    void setConfirmDeliverBtnTxt(String txt);
+
     void setBandanaNumTxt(String data);
 
     void setBandanaCardGone();

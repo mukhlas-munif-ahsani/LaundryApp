@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:paddingBottom="10dp"
-    android:paddingTop="10dp">
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+
         <TextView
             android:id="@+id/celana_txt"
             android:layout_width="@dimen/product_width"
@@ -22,35 +23,39 @@
             android:id="@+id/celana_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/celana_num"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
+            app:cb_pressedRingWidth="8dip" />
 
         <TextView
             android:id="@+id/celana_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
             android:layout_marginTop="0dp"
-            android:paddingEnd="5dp"
+            android:layout_toStartOf="@+id/celana_pls"
             android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="0" />
 
         <at.markushi.ui.CircleButton
             android:id="@+id/celana_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
-    </LinearLayout>
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
+
         <TextView
             android:id="@+id/celana_dalam_txt"
             android:layout_width="@dimen/product_width"
@@ -62,35 +67,39 @@
             android:id="@+id/celana_dalam_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/celana_dalam_num"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
+            app:cb_pressedRingWidth="8dip" />
 
         <TextView
             android:id="@+id/celana_dalam_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
             android:layout_marginTop="0dp"
-            android:paddingEnd="5dp"
+            android:layout_toStartOf="@+id/celana_dalam_pls"
             android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="0" />
 
         <at.markushi.ui.CircleButton
             android:id="@+id/celana_dalam_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
-    </LinearLayout>
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
+
         <TextView
             android:id="@+id/celana_pendek_txt"
             android:layout_width="@dimen/product_width"
@@ -102,35 +111,39 @@
             android:id="@+id/celana_pendek_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/celana_pendek_num"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
+            app:cb_pressedRingWidth="8dip" />
 
         <TextView
             android:id="@+id/celana_pendek_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
             android:layout_marginTop="0dp"
-            android:paddingEnd="5dp"
+            android:layout_toStartOf="@+id/celana_pendek_pls"
             android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="0" />
 
         <at.markushi.ui.CircleButton
             android:id="@+id/celana_pendek_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
-    </LinearLayout>
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
+
         <TextView
             android:id="@+id/sarung_txt"
             android:layout_width="@dimen/product_width"
@@ -142,35 +155,39 @@
             android:id="@+id/sarung_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/sarung_num"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
+            app:cb_pressedRingWidth="8dip" />
 
         <TextView
             android:id="@+id/sarung_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
             android:layout_marginTop="0dp"
-            android:paddingEnd="5dp"
+            android:layout_toStartOf="@+id/sarung_pls"
             android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="0" />
 
         <at.markushi.ui.CircleButton
             android:id="@+id/sarung_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
-    </LinearLayout>
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
+
         <TextView
             android:id="@+id/celana_olahraga_txt"
             android:layout_width="@dimen/product_width"
@@ -182,35 +199,39 @@
             android:id="@+id/celana_olahraga_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/celana_olahraga_num"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
+            app:cb_pressedRingWidth="8dip" />
 
         <TextView
             android:id="@+id/celana_olahraga_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
             android:layout_marginTop="0dp"
-            android:paddingEnd="5dp"
+            android:layout_toStartOf="@+id/celana_olahraga_pls"
             android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="0" />
 
         <at.markushi.ui.CircleButton
             android:id="@+id/celana_olahraga_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
-    </LinearLayout>
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
+
         <TextView
             android:id="@+id/rok_txt"
             android:layout_width="@dimen/product_width"
@@ -222,35 +243,39 @@
             android:id="@+id/rok_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/rok_num"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
+            app:cb_pressedRingWidth="8dip" />
 
         <TextView
             android:id="@+id/rok_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
             android:layout_marginTop="0dp"
-            android:paddingEnd="5dp"
+            android:layout_toStartOf="@+id/rok_pls"
             android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="0" />
 
         <at.markushi.ui.CircleButton
             android:id="@+id/rok_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
-    </LinearLayout>
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
+
         <TextView
             android:id="@+id/celana_levis_txt"
             android:layout_width="@dimen/product_width"
@@ -262,35 +287,39 @@
             android:id="@+id/celana_levis_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/celana_levis_num"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
+            app:cb_pressedRingWidth="8dip" />
 
         <TextView
             android:id="@+id/celana_levis_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
             android:layout_marginTop="0dp"
-            android:paddingEnd="5dp"
+            android:layout_toStartOf="@+id/celana_levis_pls"
             android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="0" />
 
         <at.markushi.ui.CircleButton
             android:id="@+id/celana_levis_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
-    </LinearLayout>
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_margin_top">
+
         <TextView
             android:id="@+id/kaos_kaki_txt"
             android:layout_width="@dimen/product_width"
@@ -302,29 +331,77 @@
             android:id="@+id/kaos_kaki_min"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_toStartOf="@+id/kaos_kaki_num"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_min"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
+            app:cb_pressedRingWidth="8dip" />
 
         <TextView
             android:id="@+id/kaos_kaki_num"
             android:layout_width="@dimen/product_num_width"
             android:layout_height="wrap_content"
-            android:paddingStart="5dp"
             android:layout_marginTop="0dp"
-            android:paddingEnd="5dp"
+            android:layout_toStartOf="@id/kaos_kaki_pls"
             android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
             android:text="0" />
 
         <at.markushi.ui.CircleButton
             android:id="@+id/kaos_kaki_pls"
             android:layout_width="23dip"
             android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonFeetOnclick"
             android:src="@drawable/ic_plus"
             app:cb_color="@color/putih"
-            app:cb_pressedRingWidth="8dip"
-            android:onClick="buttonFeetOnclick"/>
-    </LinearLayout>
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/item_margin_top">
+
+        <TextView
+            android:id="@+id/lain_lain_feet_txt"
+            android:layout_width="@dimen/product_width"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:paddingTop="0.1dp"
+            android:text="Lain-lain " />
+
+        <at.markushi.ui.CircleButton
+            android:id="@+id/lain_lain_feet_min"
+            android:layout_width="23dip"
+            android:layout_height="23dip"
+            android:layout_toLeftOf="@+id/lain_lain_feet_num"
+            android:onClick="buttonHeadOnclick"
+            android:src="@drawable/ic_min"
+            app:cb_color="@color/putih"
+            app:cb_pressedRingWidth="8dip" />
+
+        <TextView
+            android:id="@+id/lain_lain_feet_num"
+            android:layout_width="@dimen/product_num_width"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:layout_toLeftOf="@+id/lain_lain_feet_pls"
+            android:gravity="center"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp"
+            android:text="0" />
+
+        <at.markushi.ui.CircleButton
+            android:id="@+id/lain_lain_feet_pls"
+            android:layout_width="23dip"
+            android:layout_height="23dip"
+            android:layout_alignParentEnd="true"
+            android:onClick="buttonHeadOnclick"
+            android:src="@drawable/ic_plus"
+            app:cb_color="@color/putih"
+            app:cb_pressedRingWidth="8dip" />
+    </RelativeLayout>
 
 </LinearLayout>

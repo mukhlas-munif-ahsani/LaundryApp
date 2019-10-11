@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.tiunida.laundry0.FragmentHome.OrderFragment;
 import com.tiunida.laundry0.R;
-import com.tiunida.laundry0.FragmentHistory.HistoryFragment;
+import com.tiunida.laundry0.FragmentHistory.View.HistoryFragment;
 import com.tiunida.laundry0.ActivityLogin.View.LoginActivity;
 import com.tiunida.laundry0.FragmentProfile.View.ProfileFragment;
 import com.tiunida.laundry0.ActivitySetup.View.SetupActivity;

@@ -35,13 +35,17 @@
             <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
     <!--</com.google.android.material.appbar.AppBarLayout>-->
 
-        <ImageView
+        <TextView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
-            app:srcCompat="@drawable/data_diri" />
+            android:text="DATA DIRI"
+            android:textAlignment="center"
+            android:textColor="@color/biruGelap"
+            android:textSize="40sp"
+            android:textStyle="bold" />
 
         <LinearLayout
         android:layout_width="match_parent"

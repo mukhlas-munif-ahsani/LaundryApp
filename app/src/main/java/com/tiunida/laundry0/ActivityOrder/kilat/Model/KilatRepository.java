@@ -99,7 +99,7 @@ public class KilatRepository implements KilatRepositoryMvp {
     }
 
     @Override
-    public void storeFirestore(String desc, String time, String uniqId, String timeDone, String bandana, String topi, String masker, String kupluk, String krudung, String peci, String kaos, String kaos_dalam, String kemeja, String baju_muslim, String jaket, String sweter, String gamis, String handuk, String sarung_tangan, String sapu_tangan, String celana, String celana_dalam, String celana_pendek, String sarung, String celana_olahraga, String rok, String celana_levis, String kaos_kaki, String jas_almamater, String jas, String selimut_kecil, String selimut_besar, String bag_cover, String gordeng_kecil, String gordeng_besar, String sepatu, String bantal,
+    public void storeFirestore(String desc, String time, String uniqId, String timeDone, String bandana, String topi, String masker, String kupluk, String krudung, String peci, String lainLainHead, String kaos, String kaos_dalam, String kemeja, String baju_muslim, String jaket, String sweter, String gamis, String handuk, String lainLainBody, String sarung_tangan, String sapu_tangan, String lainLainHand, String celana, String celana_dalam, String celana_pendek, String sarung, String celana_olahraga, String rok, String celana_levis, String kaos_kaki, String lainLainFeet, String jas_almamater, String jas, String selimut_kecil, String selimut_besar, String bag_cover, String gordeng_kecil, String gordeng_besar, String sepatu, String bantal,
                                String tas_kecil, String tas_besar, String sprei_kecil, String sprei_besar) {
         getProfileData();
         int uniqTimeId = Integer.valueOf(uniqId);
@@ -127,6 +127,7 @@ public class KilatRepository implements KilatRepositoryMvp {
         userMap2.put("b_kupluk", kupluk);
         userMap2.put("b_krudung", krudung);
         userMap2.put("b_peci", peci);
+        userMap2.put("b_lain_lain_head", lainLainHead);
 
         userMap2.put("c_kaos", kaos);
         userMap2.put("c_kaos_dalam", kaos_dalam);
@@ -136,9 +137,11 @@ public class KilatRepository implements KilatRepositoryMvp {
         userMap2.put("c_sweter", sweter);
         userMap2.put("c_gamis", gamis);
         userMap2.put("c_handuk", handuk);
+        userMap2.put("c_lain_lain_body", lainLainBody);
 
         userMap2.put("d_sarung_tangan", sarung_tangan);
         userMap2.put("d_sapu_tangan", sapu_tangan);
+        userMap2.put("d_lain_lain_hand", lainLainHand);
 
         userMap2.put("f_celana", celana);
         userMap2.put("f_celana_dalam", celana_dalam);
@@ -148,6 +151,8 @@ public class KilatRepository implements KilatRepositoryMvp {
         userMap2.put("f_rok", rok);
         userMap2.put("f_celana_evis", celana_levis);
         userMap2.put("f_kaos_kaki", kaos_kaki);
+        userMap2.put("f_lain_lain_feet", lainLainFeet);
+
 
         userMap2.put("g_jas_almamater", jas_almamater);
         userMap2.put("g_jas", jas);
@@ -167,7 +172,9 @@ public class KilatRepository implements KilatRepositoryMvp {
         userMap2.put("h_on_proses2", "");
         userMap2.put("h_done2", "");
         userMap2.put("h_paid2", "");
+        userMap2.put("h_paid2Confirm", "");
         userMap2.put("h_delivered2", "");
+        userMap2.put("h_delivered2Confirm", "");
 
         firebaseFirestore.collection("Orders").add(userMap2).addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
             @Override

@@ -1,13 +1,17 @@
 package com.tiunida.laundry0.ActivityOrderDetail.View;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -25,6 +29,8 @@ import butterknife.OnClick;
 public class OrderDetailActivity extends AppCompatActivity implements OrderDetailViewMvp {
     private OrderDetailPresenterMvp mOrderDetailPresenterMvp;
 
+    @BindView(R.id.noLaudnry)
+    TextView noLaudry;
     @BindView(R.id.detailOrderToolbar)
     Toolbar mDetailOrderToolbar;
     @BindView(R.id.laudnryType)
@@ -212,8 +218,17 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     @BindView(R.id.askAdminBtn)
     Button askAdminBtn;
+    @BindView(R.id.confirmPaidBtn)
+    Button confirmPaidBtn;
+    @BindView(R.id.confirmDeliverBtn)
+    Button confirmDeliverBtn;
     @BindView(R.id.order_detail_progress)
     ProgressBar progressBar;
+
+    @BindView(R.id.swlayout)
+    SwipeRefreshLayout swLayout;
+
+    private String order_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -226,9 +241,9 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         ButterKnife.bind(this);
 
         Intent orderDetailIntent = getIntent();
-        String order_id = orderDetailIntent.getStringExtra("id");
+        order_id = orderDetailIntent.getStringExtra("id");
 
-        Toast.makeText(OrderDetailActivity.this, "order id " + order_id, Toast.LENGTH_LONG).show();
+        //Toast.makeText(OrderDetailActivity.this, "order id " + order_id, Toast.LENGTH_LONG).show();
 
         mOrderDetailPresenterMvp.getOrderData(order_id);
 
@@ -248,6 +263,28 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
             }
         });
 
+        // Mengeset properti warna yang berputar pada SwipeRefreshLayout
+        swLayout.setColorSchemeResources(R.color.biruLaut,R.color.biruGelap);
+
+        // Mengeset listener yang akan dijalankan saat layar di refresh/swipe
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+                getData();
+                Toast.makeText(OrderDetailActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
+                // Handler untuk menjalankan jeda selama 5 detik
+                new Handler().postDelayed(new Runnable() {
+                    @Override public void run() {
+                        // Berhenti berputar/refreshing
+                        swLayout.setRefreshing(false);
+
+                    }
+                }, 1000);
+            }
+        });
+
+        noLaudry.setText(order_id);
     }
 
     @Override
@@ -296,6 +333,10 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         }
     }
 
+    public void getData() {
+        mOrderDetailPresenterMvp.getOrderData(order_id);
+    }
+
     public void hideProgress(){
         progressBar.setVisibility(View.GONE);
     }
@@ -321,6 +362,82 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         if (sendIntent.resolveActivity(getPackageManager()) != null) {
             startActivity(sendIntent);
         }
+    }
+
+    @OnClick(R.id.confirmPaidBtn)
+    public void onPaidBtnOnClick(){
+        showDialogOnPaidOkBtnOnClick();
+    }
+
+    @OnClick(R.id.confirmDeliverBtn)
+    public void onDeliverOnClick(){
+        showDialogOnDeliverOkBtnOnClick();
+    }
+
+    public void showDialogOnPaidOkBtnOnClick() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Yakin udah dibayar lunas ?");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Siap udah", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol diklik, maka akan menutup activity ini
+                        mOrderDetailPresenterMvp.validateUpdatePaid(order_id);
+                        mOrderDetailPresenterMvp.getOrderData(order_id);
+
+                    }
+                })
+                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
+
+    }
+
+    public void showDialogOnDeliverOkBtnOnClick() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Yakin udah dianter sampe tujuan ?");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Siap udah", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol diklik, maka akan menutup activity ini
+                        mOrderDetailPresenterMvp.validateUpdateDeliver(order_id);
+                        mOrderDetailPresenterMvp.getOrderData(order_id);
+
+                    }
+                })
+                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
+
     }
 
     public void setTglPesan(String data) {
@@ -397,6 +514,38 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     public void setDeliveredIndicatorUnCheck() {
         deliveredIndicator.setBackgroundResource(R.drawable.circle_view_border);
+    }
+
+    public void setPaidBtnDisable() {
+        confirmPaidBtn.setEnabled(false);
+        confirmPaidBtn.setBackgroundResource(R.drawable.btn_background_disable);
+        confirmPaidBtn.setTextColor(getResources().getColor(R.color.abuabu3));
+    }
+
+    public void setPaidBtnEnable() {
+        confirmPaidBtn.setEnabled(true);
+        confirmPaidBtn.setBackgroundResource(R.drawable.btn_background_enable);
+        confirmPaidBtn.setTextColor(getResources().getColor(R.color.putih));
+    }
+
+    public void setDeliverBtnDisable() {
+        confirmDeliverBtn.setEnabled(false);
+        confirmDeliverBtn.setBackgroundResource(R.drawable.btn_background_disable);
+        confirmDeliverBtn.setTextColor(getResources().getColor(R.color.abuabu3));
+    }
+
+    public void setDeliverBtnEnable() {
+        confirmDeliverBtn.setEnabled(true);
+        confirmDeliverBtn.setBackgroundResource(R.drawable.btn_background_enable);
+        confirmDeliverBtn.setTextColor(getResources().getColor(R.color.putih));
+    }
+
+    public void setConfirmPaidBtnTxt(String txt){
+        confirmPaidBtn.setText(txt);
+    }
+
+    public void setConfirmDeliverBtnTxt(String txt){
+        confirmDeliverBtn.setText(txt);
     }
 
     public void setBandanaNumTxt(String data) {

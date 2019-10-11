@@ -1,4 +1,4 @@
-package com.tiunida.laundry0.FragmentHistory;
+package com.tiunida.laundry0.FragmentHistory.View;
 
 import android.content.Intent;
 import android.os.Bundle;

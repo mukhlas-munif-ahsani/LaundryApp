@@ -1,7 +1,10 @@
 package com.tiunida.laundry0.FragmentProfile.View;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -102,8 +105,7 @@ public class ProfileFragment extends Fragment implements ProfileFragmentViewMvp{
 
     @OnClick(R.id.log_out)
     public void onLogOut(){
-        mAuth.signOut();
-        sendToLogin();
+        showDialogOnLogOutBtnOnClick();
     }
 
     @OnClick(R.id.edit_profile)
@@ -184,6 +186,38 @@ public class ProfileFragment extends Fragment implements ProfileFragmentViewMvp{
     public void setButtons(boolean enabeled){
         mEditProfile.setEnabled(enabeled);
         mLogOut.setEnabled(enabeled);
+    }
+
+    public void showDialogOnLogOutBtnOnClick() {
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Antum yakin mau LogOut dari aplikasi ?");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("Siap udah", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol diklik, maka akan menutup activity ini
+                        mAuth.signOut();
+                        sendToLogin();
+                    }
+                })
+                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
+
     }
 
 }

@@ -8,6 +8,7 @@ import com.tiunida.laundry0.EventBus.EventBus;
 import com.tiunida.laundry0.EventBus.GreenRobotEventBus;
 import com.tiunida.laundry0.ActivityOrderDetail.events.OrderDetailEvents;
 import com.tiunida.laundry0.ActivityOrderDetail.View.OrderDetailViewMvp;
+import com.tiunida.laundry0.R;
 
 import org.greenrobot.eventbus.Subscribe;
 
@@ -34,7 +35,7 @@ public class OrderDetailPresenter implements OrderDetailPresenterMvp {
                         event.getDataSarungTangan(), event.getDataSapuTangan(), event.getDataCelana(), event.getDataCelanaDalam(), event.getDataCelanaPendek(),
                         event.getDataSrung(), event.getDataCelanaOlahraga(), event.getDataRok(), event.getDataCelanaLevis(), event.getDataKaosKaki(), event.getDataJasAlmamater(),
                         event.getDataJas(), event.getDataSelimutBesar(), event.getDataSelimutKecil(), event.getDataBagCover(), event.getDataGordengKecil(), event.getDataGordengBesar(),
-                        event.getDataSepatu(), event.getDataBantal(), event.getDataTasKecil(), event.getDataTasBesar(), event.getDataSpreiKecil(), event.getDataSpreiBesar(), event.getDataAccept(), event.getDataOnProses(), event.getDataDone(), event.getDataPaid(), event.getDataDelivered());
+                        event.getDataSepatu(), event.getDataBantal(), event.getDataTasKecil(), event.getDataTasBesar(), event.getDataSpreiKecil(), event.getDataSpreiBesar(), event.getDataAccept(), event.getDataOnProses(), event.getDataDone(), event.getDataPaid(),  event.getDataPaidConfirm(), event.getDataDelivered(), event.getDataDeliveredConfirm());
                 break;
             case OrderDetailEvents.onGetDataError:
 
@@ -89,19 +90,35 @@ public class OrderDetailPresenter implements OrderDetailPresenterMvp {
 
                                  String dataAccept, String dataOnProses,
                                  String dataDone, String dataPaid,
-                                 String delivered) {
+                                 String paidConfirm, String delivered, String deliverConfirm) {
 
         //mOrderDetailViewMvp.showProgress();
         if (mOrderDetailViewMvp != null) {
             setInfo(jenis, timeNow, timeDpne, weight, price, priceDiskon, diskon);
-            setIndicator(dataAccept, dataOnProses, dataDone, dataPaid, delivered);
+            setIndicator(dataAccept, dataOnProses, dataDone, paidConfirm, deliverConfirm);
             setHeadCard(dataBandana, dataTopi, dataMasker, dataKupluk, dataKrudung, dataPeci);
             setBodyCard(dataKaos, dataKaosDalam, dataKemeja, dataBajuMuslim, dataJaket, dataSweter, dataGamis, dataHanduk);
             setHandCard(dataSarungTangan, dataSapuTangan);
             setFeetCard(dataCelana, dataCelanaDalam, dataCelanaPendek, dataSrung, dataCelanaOlahraga, dataRok, dataCelanaLevis, dataKaosKaki);
             setOtherCard(dataJasAlmamater, dataJas, dataSelimutBesar, dataSelimutKecil, dataBagCover, dataGordengKecil, dataGordengBesar, dataSepatu, dataBantal, dataTasKecil, dataTasBesar, dataSpreiKecil, dataSpreiBesar);
+            setPaidButton(dataDone, dataPaid, paidConfirm);
+            setDeliverButton(dataPaid, delivered, deliverConfirm);
             mOrderDetailViewMvp.hideProgress();
             mOrderDetailViewMvp.setAskAdminBtnEnable();
+        }
+    }
+
+    public void validateUpdatePaid(String order_id) {
+        if (!order_id.isEmpty()) {
+            mOrderDetailViewMvp.showProgress();
+            mOrderDetailInteractorMvp.updatePaid(order_id);
+        }
+    }
+
+    public void validateUpdateDeliver(String order_id) {
+        if (!order_id.isEmpty()) {
+            mOrderDetailViewMvp.showProgress();
+            mOrderDetailInteractorMvp.updateDeliver(order_id);
         }
     }
 
@@ -402,6 +419,39 @@ public class OrderDetailPresenter implements OrderDetailPresenterMvp {
             mOrderDetailViewMvp.setSpreiBesarCardGone();
         } else {
             mOrderDetailViewMvp.setSpreiBesarNumTxt(dataSpreiBesar);
+        }
+    }
+
+    public void setPaidButton(String dataDone, String dataPaid, String dataPaidConfrim) {
+        String exist = "1";
+        String empty = "";
+        if (dataDone.equals(exist) && dataPaid.equals(empty) && dataPaidConfrim.equals(empty)) {
+            mOrderDetailViewMvp.setPaidBtnEnable();
+            mOrderDetailViewMvp.setConfirmPaidBtnTxt("KONFIRMASI TELAH DIBAYAR");
+        } else if (dataDone.equals(empty) && dataPaid.equals(empty) && dataPaidConfrim.equals(empty)){
+            mOrderDetailViewMvp.setPaidBtnDisable();
+            mOrderDetailViewMvp.setConfirmPaidBtnTxt("KONFIRMASI TELAH DIBAYAR");
+        } else if (dataPaid.equals(exist) && dataPaidConfrim.equals(exist)) {
+            mOrderDetailViewMvp.setPaidBtnDisable();
+            mOrderDetailViewMvp.setConfirmPaidBtnTxt("SELESAI DIBAYAR");
+        } else if (dataPaid.equals(exist) && dataPaidConfrim.equals(empty)){
+            mOrderDetailViewMvp.setPaidBtnDisable();
+            mOrderDetailViewMvp.setConfirmPaidBtnTxt("MENUNGGU KONFIRMASI KURIR");
+        }
+    }
+
+    public void setDeliverButton(String dataPaidConfrim, String delivered, String deliverConfirm) {
+        String exist = "1";
+        String empty = "";
+        if (dataPaidConfrim.equals(exist) && delivered.equals(empty) && deliverConfirm.equals(empty)) {
+            mOrderDetailViewMvp.setDeliverBtnDisable();
+            mOrderDetailViewMvp.setConfirmDeliverBtnTxt("KONFIRMASI TELAH DITERIMA");
+        } else if (delivered.equals(exist) && deliverConfirm.equals(exist)){
+            mOrderDetailViewMvp.setDeliverBtnDisable();
+            mOrderDetailViewMvp.setConfirmDeliverBtnTxt("SELESAI DIANTAR");
+        } else if (delivered.equals(exist) && deliverConfirm.equals(empty)){
+            mOrderDetailViewMvp.setDeliverBtnEnable();
+            mOrderDetailViewMvp.setConfirmDeliverBtnTxt("KONFIRMASI TELAH DITERIMA");
         }
     }
 }

@@ -5,6 +5,8 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -14,6 +16,9 @@ import com.google.firebase.storage.StorageReference;
 import com.tiunida.laundry0.EventBus.EventBus;
 import com.tiunida.laundry0.EventBus.GreenRobotEventBus;
 import com.tiunida.laundry0.ActivityOrderDetail.events.OrderDetailEvents;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class OrderDetailRepository implements OrderDetailReposritoryMvp {
     private StorageReference storageReference;
@@ -54,6 +59,42 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
     }
 
     @Override
+    public void updatePaid(String order_id) {
+        Map<String, Object> userMap2 = new HashMap<>();
+        userMap2.put("h_paid2", "1");
+
+        firebaseFirestore.collection("Orders").document(order_id).update(userMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                postEvent(OrderDetailEvents.onUpdateDataSuccess);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                postEvent(OrderDetailEvents.onUpdateDataError, e.getLocalizedMessage());
+            }
+        });
+    }
+
+    @Override
+    public void updateDeliver(String order_id) {
+        Map<String, Object> userMap2 = new HashMap<>();
+        userMap2.put("h_delivered2Confirm", "1");
+
+        firebaseFirestore.collection("Orders").document(order_id).update(userMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                postEvent(OrderDetailEvents.onUpdateDataSuccess);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                postEvent(OrderDetailEvents.onUpdateDataError, e.getLocalizedMessage());
+            }
+        });
+    }
+
+    @Override
     public void getOrdersData(String order_id) {
         firebaseFirestore.collection("Orders").document(order_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
@@ -62,6 +103,7 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
                     Log.d("repo onComplete suc:", "masuk");
 
                     if (task.getResult().exists()) {
+                       // String orderId = task.getResult().getString("");
                         String desc = task.getResult().getString("a_catatan");
                         String timeNow = task.getResult().getString("a_time");
                         String timeDone = task.getResult().getString("a_waktu_selesai");
@@ -117,14 +159,16 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
                         String onProses = task.getResult().getString("h_on_proses2");
                         String done = task.getResult().getString("h_done2");
                         String paid = task.getResult().getString("h_paid2");
+                        String paidConfirm = task.getResult().getString("h_paid2Confirm");
                         String delivered = task.getResult().getString("h_delivered2");
+                        String deliveredConfirm = task.getResult().getString("h_delivered2Confirm");
 
                         //Log.d("dona data ", "" + test);
 
                         postEvent(OrderDetailEvents.onGetDataSuccess, null, jenis, desc, timeNow, timeDone, weight, price, priceDiskon, diskon, bandana, topi, masker, kupluk, krudung, peci,
                                 kaos, kaosDalam, kemeja, bajuMuslim, jaket, sweter, gamis, handuk, sarungTangan, sapuTangan, celana, celanaDalam, celanaPendek, sarung,
                                 celanaOlahraga, rok, celanaLevis, kaosKaki, jasAlmamater, jas, selimutBesar, selimutKecil, bagCover, gordengKecil, gordengBesar, sepatu,
-                                bantal, tasKecil, tasBesar, spreiKecil, spreiBesar, accept, onProses, done, paid, delivered);
+                                bantal, tasKecil, tasBesar, spreiKecil, spreiBesar, accept, onProses, done, paid, paidConfirm, delivered, deliveredConfirm);
                     }
                 } else {
                     String errorMessage = task.getException().getMessage();
@@ -143,7 +187,7 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
                           String dataCelanaLevis, String dataKaosKaki,
                           String dataJasAlmamater, String dataJas, String dataSelimutBesar, String dataSelimutKecil, String dataBagCover,
                           String dataGordengKecil, String dataGordengBesar, String dataSepatu, String dataBantal, String dataTasKecil, String dataTasBesar,
-                          String dataSpreiKecil, String dataSpreiBesar, String dataAccept, String dataOnProses, String dataDone, String dataPaid, String delivered) {
+                          String dataSpreiKecil, String dataSpreiBesar, String dataAccept, String dataOnProses, String dataDone, String dataPaid, String dataPaidConfirm, String delivered, String deliveredConfirm) {
         OrderDetailEvents orderDetailEvents = new OrderDetailEvents();
         orderDetailEvents.setEventType(type);
         Log.d("masuk post", "masuk post event succes not null");
@@ -200,7 +244,9 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
         orderDetailEvents.setDataOnProses(dataOnProses);
         orderDetailEvents.setDataDone(dataDone);
         orderDetailEvents.setDataPaid(dataPaid);
+        orderDetailEvents.setDataPaidConfirm(dataPaidConfirm);
         orderDetailEvents.setDataDelivered(delivered);
+        orderDetailEvents.setDataDeliveredConfirm(deliveredConfirm);
 
         EventBus eventBus = GreenRobotEventBus.getInstance();
         eventBus.post(orderDetailEvents);
@@ -208,12 +254,12 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
 
     @Override
     public void postEvent(int type, String errorMessage) {
-        postEvent(type, errorMessage, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        postEvent(type, errorMessage, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
     @Override
     public void postEvent(int type) {
-        postEvent(type, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+        postEvent(type, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
     }
 
 }

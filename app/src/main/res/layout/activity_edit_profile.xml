@@ -37,13 +37,17 @@
         <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>-->
         <!--</com.google.android.material.appbar.AppBarLayout>-->
 
-        <ImageView
+        <TextView
             android:id="@+id/imageView2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="30dp"
-            app:srcCompat="@drawable/edit_profile" />
+            android:text="EDIT PROFILE"
+            android:textAlignment="center"
+            android:textColor="@color/biruLaut"
+            android:textSize="36sp"
+            android:textStyle="bold" />
 
         <ScrollView
             android:layout_width="match_parent"

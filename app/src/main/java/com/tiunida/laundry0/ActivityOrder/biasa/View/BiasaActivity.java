@@ -79,6 +79,8 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     CircleButton mKrudungMin;
     @BindView(R.id.peci_min)
     CircleButton mPeciMin;
+    @BindView(R.id.lain_lain_head_min)
+    CircleButton lainLainHeadMin;
     @BindView(R.id.bandana_num)
     TextView mBandanaNum;
     @BindView(R.id.topi_num)
@@ -91,6 +93,8 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     TextView mKrudungNum;
     @BindView(R.id.peci_num)
     TextView mPeciNum;
+    @BindView(R.id.lain_lain_head_num)
+    TextView lainlainheadNum;
     @BindView(R.id.bandana_pls)
     CircleButton mBandanaPls;
     @BindView(R.id.topi_pls)
@@ -103,8 +107,9 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     CircleButton mKrudungPls;
     @BindView(R.id.peci_pls)
     CircleButton mPeciPls;
-    private int mBandanaInt, mTopiInt, mMaskerInt, mKuplukInt, mKrudungInt, mPeciInt = 0;
-
+    @BindView(R.id.lain_lain_head_pls)
+    CircleButton lainLainHeadPls;
+    private int mBandanaInt, mTopiInt, mMaskerInt, mKuplukInt, mKrudungInt, mPeciInt, mLainLainHeadInt = 0;
 
     @BindView(R.id.kaos_min)
     CircleButton mKaosMin;
@@ -122,6 +127,8 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     CircleButton mGamisMin;
     @BindView(R.id.handuk_min)
     CircleButton mHandukMin;
+    @BindView(R.id.lain_lain_body_min)
+    CircleButton lainLainBodyMin;
     @BindView(R.id.kaos_num)
     TextView mKaosNum;
     @BindView(R.id.kaos_dalam_num)
@@ -138,6 +145,8 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     TextView mGamisNum;
     @BindView(R.id.handuk_num)
     TextView mHandukNum;
+    @BindView(R.id.lain_lain_body_num)
+    TextView lainLainBodyNum;
     @BindView(R.id.kaos_pls)
     CircleButton mKaosPls;
     @BindView(R.id.kaos_dalam_pls)
@@ -154,21 +163,29 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     CircleButton mGamisPls;
     @BindView(R.id.handuk_pls)
     CircleButton mHandukPls;
-    private int mKaosInt, mKaosDalamInt, mKemejaInt, mBajuMuslimInt, mJaketInt, mSweterInt, mGamisInt, mHandukInt;
+    @BindView(R.id.lain_lain_body_pls)
+    CircleButton lainLainBodyPls;
+    private int mKaosInt, mKaosDalamInt, mKemejaInt, mBajuMuslimInt, mJaketInt, mSweterInt, mGamisInt, mHandukInt, mLainLainBodyInt;
 
     @BindView(R.id.sarung_tangan_min)
     CircleButton mSarungTanganMin;
     @BindView(R.id.sapu_tangan_min)
     CircleButton mSapuTanganMin;
+    @BindView(R.id.lain_lain_hand_min)
+    CircleButton lainLainHandMin;
     @BindView(R.id.sarung_tangan_num)
     TextView mSarungTanganNum;
     @BindView(R.id.sapu_tangan_num)
     TextView mSapuTanganNum;
+    @BindView(R.id.lain_lain_hand_num)
+    TextView lainLainHandNum;
     @BindView(R.id.sarung_tangan_pls)
     CircleButton mSarungTanganPls;
     @BindView(R.id.sapu_tangan_pls)
     CircleButton mSapuTanganPls;
-    private int mSarungTanganInt, mSapuTanganInt;
+    @BindView(R.id.lain_lain_hand_pls)
+    CircleButton lainLainHandPls;
+    private int mSarungTanganInt, mSapuTanganInt, mLainLainHandInt;
 
     @BindView(R.id.celana_min)
     CircleButton mCelanaMIn;
@@ -186,6 +203,8 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     CircleButton mCelanaLevisMin;
     @BindView(R.id.kaos_kaki_min)
     CircleButton mKaosKakiMin;
+    @BindView(R.id.lain_lain_feet_min)
+    CircleButton lainLainFeetmin;
     @BindView(R.id.celana_num)
     TextView mCelanaNum;
     @BindView(R.id.celana_dalam_num)
@@ -202,6 +221,8 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     TextView mCelanaLevisNum;
     @BindView(R.id.kaos_kaki_num)
     TextView mKaosKakiNum;
+    @BindView(R.id.lain_lain_feet_num)
+    TextView lainLainFeetNum;
     @BindView(R.id.celana_pls)
     CircleButton mCelanaPls;
     @BindView(R.id.celana_dalam_pls)
@@ -218,7 +239,9 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     CircleButton mCelanaLevisPls;
     @BindView(R.id.kaos_kaki_pls)
     CircleButton mKaosKakiPls;
-    private int mCelanaInt, mCelanaDalamInt, mCelanaPendekInt, mSarungInt, mCelanaOlahragaInt, mRokInt, mCelanaLevisInt, mKaosKakiInt;
+    @BindView(R.id.lain_lain_feet_pls)
+    CircleButton lainLainFeetPls;
+    private int mCelanaInt, mCelanaDalamInt, mCelanaPendekInt, mSarungInt, mCelanaOlahragaInt, mRokInt, mCelanaLevisInt, mKaosKakiInt, mLainLainFeetInt;
 
     @BindView(R.id.jas_almamater_min)
     CircleButton mJasAlmamaterMin;
@@ -662,6 +685,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         mKuplukMin.setEnabled(enabeled);
         mKrudungMin.setEnabled(enabeled);
         mPeciMin.setEnabled(enabeled);
+        lainLainHeadMin.setEnabled(enabeled);
 
         mBandanaPls.setEnabled(enabeled);
         mTopiPls.setEnabled(enabeled);
@@ -669,6 +693,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         mKuplukPls.setEnabled(enabeled);
         mKrudungPls.setEnabled(enabeled);
         mPeciPls.setEnabled(enabeled);
+        lainLainHeadPls.setEnabled(enabeled);
 
         mKaosMin.setEnabled(enabeled);
         mKaosDalamMin.setEnabled(enabeled);
@@ -678,6 +703,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         mSweterMin.setEnabled(enabeled);
         mGamisMin.setEnabled(enabeled);
         mHandukMin.setEnabled(enabeled);
+        lainLainBodyMin.setEnabled(enabeled);
 
         mKaosPls.setEnabled(enabeled);
         mKaosDalamPls.setEnabled(enabeled);
@@ -687,12 +713,15 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         mSweterPls.setEnabled(enabeled);
         mGamisPls.setEnabled(enabeled);
         mHandukPls.setEnabled(enabeled);
+        lainLainBodyPls.setEnabled(enabeled);
 
         mSarungTanganMin.setEnabled(enabeled);
         mSapuTanganMin.setEnabled(enabeled);
+        lainLainHandMin.setEnabled(enabeled);
 
         mSarungTanganPls.setEnabled(enabeled);
         mSapuTanganPls.setEnabled(enabeled);
+        lainLainHandPls.setEnabled(enabeled);
 
         mCelanaMIn.setEnabled(enabeled);
         mCelanaDalamMin.setEnabled(enabeled);
@@ -702,6 +731,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         mRokMin.setEnabled(enabeled);
         mCelanaLevisMin.setEnabled(enabeled);
         mKaosKakiMin.setEnabled(enabeled);
+        lainLainHandMin.setEnabled(enabeled);
 
         mCelanaPls.setEnabled(enabeled);
         mCelanaDalamPls.setEnabled(enabeled);
@@ -711,6 +741,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         mRokPls.setEnabled(enabeled);
         mCelanaLevisPls.setEnabled(enabeled);
         mKaosKakiPls.setEnabled(enabeled);
+        lainLainHandPls.setEnabled(enabeled);
 
         mJasAlmamaterMin.setEnabled(enabeled);
         mJasMin.setEnabled(enabeled);
@@ -797,6 +828,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         final String kupluk = String.valueOf(mKuplukInt);
         final String krudung = String.valueOf(mKrudungInt);
         final String peci = String.valueOf(mPeciInt);
+        final String lainLainHead = String.valueOf(mLainLainHeadInt);
 
         final String kaos = String.valueOf(mKaosInt);
         final String kaosDalam = String.valueOf(mKaosDalamInt);
@@ -806,9 +838,11 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         final String sweter = String.valueOf(mSweterInt);
         final String gamis = String.valueOf(mGamisInt);
         final String handuk = String.valueOf(mHandukInt);
+        final String lainLainBody = String.valueOf(mLainLainBodyInt);
 
         final String sarungTangan = String.valueOf(mSarungTanganInt);
         final String sapuTangan = String.valueOf(mSapuTanganInt);
+        final String lainLainHand = String.valueOf(mLainLainHandInt);
 
         final String celana = String.valueOf(mCelanaInt);
         final String celanaDalam = String.valueOf(mCelanaDalamInt);
@@ -818,6 +852,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         final String rok = String.valueOf(mRokInt);
         final String celanaLevis = String.valueOf(mCelanaLevisInt);
         final String kaosKaki = String.valueOf(mKaosKakiInt);
+        final String lainLainFeet = String.valueOf(mLainLainFeetInt);
 
         final String jasAlmamater = String.valueOf(mJasAlmamaterInt);
         final String jas = String.valueOf(mJasInt);
@@ -834,10 +869,10 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         final String spreiBesar = String.valueOf(mSpreiBesarInt);
 
         mBiasaPresenterMvp.validateInputs(desc, timeNow, uniqNumTime, timeDone,
-                bandana, topi, masker, kupluk, krudung, peci,
-                kaos, kaosDalam, kemeja, bajuMuslim, jaket, sweter, gamis, handuk,
-                sarungTangan, sapuTangan,
-                celana, celanaDalam, celanaPendek, sarung, celanaOlahraga, rok, celanaLevis, kaosKaki,
+                bandana, topi, masker, kupluk, krudung, peci, lainLainHead,
+                kaos, kaosDalam, kemeja, bajuMuslim, jaket, sweter, gamis, handuk, lainLainBody,
+                sarungTangan, sapuTangan, lainLainHand,
+                celana, celanaDalam, celanaPendek, sarung, celanaOlahraga, rok, celanaLevis, kaosKaki, lainLainFeet,
                 jasAlmamater, jas, selimutKecil, selimutBesar, bagCover, gordengKecil, gordengBesar, sepatu, bantal, tasKecil, tasBesar, spreiKecil, spreiBesar);
     }
 
@@ -865,7 +900,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         alertDialog.show();
     }
 
-    public void showDialogEmptyData(String desc, String time, String uniqId, String timeDone, String bandana, String topi, String masker, String kupluk, String krudung, String peci, String kaos, String kaos_dalam, String kemeja, String baju_muslim, String jaket, String sweter, String gamis, String handuk, String sarung_tangan, String sapu_tangan, String celana, String celana_dalam, String celana_pendek, String sarung, String celana_olahraga, String rok, String celana_levis, String kaos_kaki, String jas_almamater, String jas, String selimut_kecil, String selimut_besar, String bag_cover, String gordeng_kecil, String gordeng_besar, String sepatu, String bantal, String tas_kecil, String tas_besar, String sprei_kecil, String sprei_besar) {
+    public void showDialogEmptyData(String desc, String time, String uniqId, String timeDone, String bandana, String topi, String masker, String kupluk, String krudung, String peci, String lainLainHead, String kaos, String kaos_dalam, String kemeja, String baju_muslim, String jaket, String sweter, String gamis, String handuk, String lainLainBody, String sarung_tangan, String sapu_tangan, String lainLainHand, String celana, String celana_dalam, String celana_pendek, String sarung, String celana_olahraga, String rok, String celana_levis, String kaos_kaki, String lainLainFeet, String jas_almamater, String jas, String selimut_kecil, String selimut_besar, String bag_cover, String gordeng_kecil, String gordeng_besar, String sepatu, String bantal, String tas_kecil, String tas_besar, String sprei_kecil, String sprei_besar) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set title dialog
@@ -878,7 +913,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
                 .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol diklik, maka akan menutup activity ini
-                        mBiasaPresenterMvp.inputs(desc, time, uniqId, timeDone, bandana, topi, masker, kupluk, krudung, peci, kaos, kaos_dalam, kemeja, baju_muslim, jaket, sweter, gamis, handuk, sarung_tangan, sapu_tangan, celana, celana_dalam, celana_pendek, sarung, celana_olahraga, rok, celana_levis, kaos_kaki, jas_almamater, jas, selimut_kecil, selimut_besar, bag_cover, gordeng_kecil, gordeng_besar, sepatu, bantal, tas_kecil, tas_besar, sprei_kecil, sprei_besar);
+                        mBiasaPresenterMvp.inputs(desc, time, uniqId, timeDone, bandana, topi, masker, kupluk, krudung, peci, lainLainHead, kaos, kaos_dalam, kemeja, baju_muslim, jaket, sweter, gamis, handuk, lainLainBody, sarung_tangan, sapu_tangan, lainLainHand, celana, celana_dalam, celana_pendek, sarung, celana_olahraga, rok, celana_levis, kaos_kaki, lainLainFeet, jas_almamater, jas, selimut_kecil, selimut_besar, bag_cover, gordeng_kecil, gordeng_besar, sepatu, bantal, tas_kecil, tas_besar, sprei_kecil, sprei_besar);
 
                     }
                 })
@@ -898,7 +933,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
 
     }
 
-    public void showDialogConfirmData(String desc, String time, String uniqId, String timeDone, String bandana, String topi, String masker, String kupluk, String krudung, String peci, String kaos, String kaos_dalam, String kemeja, String baju_muslim, String jaket, String sweter, String gamis, String handuk, String sarung_tangan, String sapu_tangan, String celana, String celana_dalam, String celana_pendek, String sarung, String celana_olahraga, String rok, String celana_levis, String kaos_kaki, String jas_almamater, String jas, String selimut_kecil, String selimut_besar, String bag_cover, String gordeng_kecil, String gordeng_besar, String sepatu, String bantal, String tas_kecil, String tas_besar, String sprei_kecil, String sprei_besar) {
+    public void showDialogConfirmData(String desc, String time, String uniqId, String timeDone, String bandana, String topi, String masker, String kupluk, String krudung, String peci, String lainLainHead, String kaos, String kaos_dalam, String kemeja, String baju_muslim, String jaket, String sweter, String gamis, String handuk, String lainLainBody, String sarung_tangan, String sapu_tangan, String lainLainHand, String celana, String celana_dalam, String celana_pendek, String sarung, String celana_olahraga, String rok, String celana_levis, String kaos_kaki, String lainLainFeet, String jas_almamater, String jas, String selimut_kecil, String selimut_besar, String bag_cover, String gordeng_kecil, String gordeng_besar, String sepatu, String bantal, String tas_kecil, String tas_besar, String sprei_kecil, String sprei_besar) {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set title dialog
@@ -911,7 +946,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
                 .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol diklik, maka akan menutup activity ini
-                        mBiasaPresenterMvp.inputs(desc, time, uniqId, timeDone, bandana, topi, masker, kupluk, krudung, peci, kaos, kaos_dalam, kemeja, baju_muslim, jaket, sweter, gamis, handuk, sarung_tangan, sapu_tangan, celana, celana_dalam, celana_pendek, sarung, celana_olahraga, rok, celana_levis, kaos_kaki, jas_almamater, jas, selimut_kecil, selimut_besar, bag_cover, gordeng_kecil, gordeng_besar, sepatu, bantal, tas_kecil, tas_besar, sprei_kecil, sprei_besar);
+                        mBiasaPresenterMvp.inputs(desc, time, uniqId, timeDone, bandana, topi, masker, kupluk, krudung, peci, lainLainHead, kaos, kaos_dalam, kemeja, baju_muslim, jaket, sweter, gamis, handuk, lainLainBody, sarung_tangan, sapu_tangan, lainLainHand, celana, celana_dalam, celana_pendek, sarung, celana_olahraga, rok, celana_levis, kaos_kaki, lainLainFeet, jas_almamater, jas, selimut_kecil, selimut_besar, bag_cover, gordeng_kecil, gordeng_besar, sepatu, bantal, tas_kecil, tas_besar, sprei_kecil, sprei_besar);
 
                     }
                 })
@@ -1026,6 +1061,20 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     public void peciPlsOnclick() {
         mPeciInt = mPeciInt + 1;
         mPeciNum.setText("" + mPeciInt);
+    }
+
+    @OnClick(R.id.lain_lain_head_min)
+    public void lainLainHeadMinOnClick(){
+        mLainLainHeadInt = mLainLainHeadInt - 1;
+        if (mLainLainHeadInt < 1)
+            mLainLainHeadInt = 0;
+        lainlainheadNum.setText("" + mLainLainHeadInt);
+    }
+
+    @OnClick(R.id.lain_lain_head_pls)
+    public void lainLainHeadPlsOnClick(){
+       mLainLainHeadInt = mLainLainHeadInt + 1;
+       lainlainheadNum.setText("" + mLainLainHeadInt);
     }
 
     @Override
@@ -1156,6 +1205,20 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         mHandukNum.setText("" + mHandukInt);
     }
 
+    @OnClick(R.id.lain_lain_body_min)
+    public void lainLainBodyMinOnClick(){
+        mLainLainBodyInt = mLainLainBodyInt - 1;
+        if (mLainLainBodyInt < 1)
+            mLainLainBodyInt = 0;
+        lainLainBodyNum.setText("" + mLainLainBodyInt);
+    }
+
+    @OnClick(R.id.lain_lain_body_pls)
+    public void lainLainBodyPlsOnClick(){
+        mLainLainBodyInt = mLainLainBodyInt + 1;
+        lainLainBodyNum.setText("" + mLainLainBodyInt);
+    }
+
     @Override
     @OnClick(R.id.sarung_tangan_min)
     public void sarungTanganMinOnClick() {
@@ -1186,6 +1249,20 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     public void sapuTanganPlsOnClick() {
         mSapuTanganInt = mSapuTanganInt + 1;
         mSapuTanganNum.setText("" + mSapuTanganInt);
+    }
+
+    @OnClick(R.id.lain_lain_hand_min)
+    public void lainLainHandMinOnClick(){
+        mLainLainHandInt = mLainLainHandInt - 1;
+        if (mLainLainHandInt < 1)
+            mLainLainHandInt = 0;
+        lainLainHandNum.setText("" + mLainLainHandInt);
+    }
+
+    @OnClick(R.id.lain_lain_hand_pls)
+    public void lainLainHandPlsOnClick(){
+        mLainLainHandInt = mLainLainHandInt + 1;
+        lainLainHandNum.setText("" + mLainLainHandInt);
     }
 
     @Override
@@ -1314,6 +1391,20 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     public void kaosKakiPlsOnClick() {
         mKaosKakiInt = mKaosKakiInt + 1;
         mKaosKakiNum.setText("" + mKaosKakiInt);
+    }
+
+    @OnClick(R.id.lain_lain_feet_min)
+    public void lainLainFeetMinOnClick(){
+        mLainLainFeetInt = mLainLainFeetInt - 1;
+        if (mLainLainFeetInt < 1)
+            mLainLainFeetInt = 0;
+        lainLainFeetNum.setText("" + mLainLainFeetInt);
+    }
+
+    @OnClick(R.id.lain_lain_feet_pls)
+    public void lainLainFeetPlsOnClick(){
+        mLainLainFeetInt = mLainLainFeetInt + 1;
+        lainLainFeetNum.setText("" + mLainLainFeetInt);
     }
 
     @Override

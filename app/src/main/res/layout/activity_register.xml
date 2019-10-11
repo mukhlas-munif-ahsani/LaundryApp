@@ -18,15 +18,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ScrollView
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <!--<ScrollView-->
+        <!--android:id="@+id/scrollView2"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--app:layout_constraintLeft_toLeftOf="parent"-->
+        <!--app:layout_constraintRight_toRightOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent">-->
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -36,9 +36,9 @@
                 android:id="@+id/email_reg_edt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="164dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/text_field_border"
                 android:ems="10"
                 android:hint="@string/email_edt_txt"
@@ -59,9 +59,9 @@
                 android:id="@+id/pass_reg_edt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/text_field_border"
                 android:ems="10"
                 android:hint="@string/pass_edt_text"
@@ -81,9 +81,9 @@
                 android:id="@+id/pass_cofrm_edt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/text_field_border"
                 android:ems="10"
                 android:hint="Confirm password"
@@ -103,9 +103,9 @@
                 android:id="@+id/reg_btn"
                 android:layout_width="0dp"
                 android:layout_height="40dp"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginEnd="24dp"
                 android:background="@drawable/btn_background"
                 android:text="register"
                 android:textColor="@color/putih"
@@ -143,7 +143,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/reg_btn"
                 app:layout_constraintVertical_bias="1.0" />
 
-            <ImageView
+            <TextView
                 android:id="@+id/imageView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -151,14 +151,17 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:text="SIGN UP"
+                android:textColor="@color/biruLaut"
+                android:textSize="40sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/email_reg_edt"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/sign_up" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    <!--</ScrollView>-->
 
 
 </FrameLayout>

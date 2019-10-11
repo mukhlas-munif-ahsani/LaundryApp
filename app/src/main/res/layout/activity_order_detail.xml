@@ -20,22 +20,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--<com.google.android.material.appbar.AppBarLayout-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">-->
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-            <!--<androidx.appcompat.widget.Toolbar-->
-                <!--android:id="@+id/detailOrderToolbar"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="?attr/actionBarSize"-->
-                <!--android:background="@color/putih"-->
-                <!--app:titleTextAppearance="@style/Toolbar.TitleText"-->
-                <!--app:layout_scrollFlags="scroll|enterAlways"-->
-                <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light"-->
-                <!--app:title="@string/order_title"-->
-                <!--app:titleTextColor="@color/hitam" />-->
-        <!--</com.google.android.material.appbar.AppBarLayout>-->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/detailOrderToolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/putih"
+                app:titleTextAppearance="@style/Toolbar.TitleText"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:title="@string/order_title"
+                app:titleTextColor="@color/hitam" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swlayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -486,7 +493,7 @@
                     android:paddingStart="24dp"
                     android:paddingTop="4dp"
                     android:paddingEnd="24dp"
-                    android:paddingBottom="8dp">
+                    android:paddingBottom="20dp">
 
                     <TextView
                         android:id="@+id/clothesTxt"
@@ -537,10 +544,36 @@
                 </RelativeLayout>
 
                 <Button
+                    android:id="@+id/confirmPaidBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_below="@+id/clothes"
+                    android:background="@drawable/btn_background_disable"
+                    android:enabled="false"
+                    android:text="KONFIRMASI TELAH DI BAYAR"
+                    android:textColor="@color/abuabu3" />
+
+                <Button
+                    android:id="@+id/confirmDeliverBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_below="@+id/confirmPaidBtn"
+                    android:background="@drawable/btn_background_disable"
+                    android:enabled="false"
+                    android:text="KONFIRMASI TELAH DI TERIMA"
+                    android:textColor="@color/abuabu3" />
+
+                <Button
                     android:id="@+id/askAdminBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/clothes"
+                    android:layout_below="@+id/confirmDeliverBtn"
                     android:background="@color/putih"
                     android:enabled="false"
                     android:text="ASK ADMIN"
@@ -549,6 +582,7 @@
             </RelativeLayout>
 
         </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

@@ -68,7 +68,7 @@ public class OrderAdapter extends FirestoreRecyclerAdapter<Model, OrderAdapter.O
             orderHolder.mDoneLine.setBackgroundResource(R.drawable.ractangle_view_putih);
         }
 
-        if (model.getH_paid2().equals(string1)) {
+        if (model.getH_paid2Confirm().equals(string1)) {
             orderHolder.mPaindIndicator.setBackgroundResource(R.drawable.circle_view_background);
             orderHolder.mPaidLine.setBackgroundResource(R.drawable.ractangle_view_birulaut);
         } else {
@@ -76,7 +76,7 @@ public class OrderAdapter extends FirestoreRecyclerAdapter<Model, OrderAdapter.O
             orderHolder.mPaidLine.setBackgroundResource(R.drawable.ractangle_view_putih);
         }
 
-        if (model.getH_delivered2().equals(string1)) {
+        if (model.getH_delivered2Confirm().equals(string1)) {
             orderHolder.mDeliveredIndicator.setBackgroundResource(R.drawable.circle_view_background);
         } else {
             orderHolder.mDeliveredIndicator.setBackgroundResource(R.drawable.circle_view_border);

@@ -80,6 +80,7 @@
                 android:layout_width="70dp"
                 android:layout_height="70dp"
                 android:layout_marginTop="14dp"
+                android:visibility="invisible"
                 android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
                 android:src="@drawable/default_image" />
@@ -358,6 +359,7 @@
                 android:layout_height="wrap_content"
                 style="?android:attr/borderlessButtonStyle"
                 android:text="Pusat Bantuan"
+                android:visibility="gone"
                 android:paddingStart="24dp"
                 android:gravity="left|center_vertical"
                 android:textAllCaps="false"/>

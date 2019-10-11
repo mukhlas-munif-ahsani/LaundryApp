@@ -2,7 +2,9 @@ package com.tiunida.laundry0.ActivityLogin.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,12 +25,18 @@ import butterknife.OnClick;
 public class LoginActivity extends AppCompatActivity implements LoginMvpView {
 
 
-    @BindView(R.id.login_progress) ProgressBar mProgressBar;
-    @BindView(R.id.emailEdtTxt) EditText mEdtTxtEmail;
-    @BindView(R.id.passEdtTxt) EditText mEdtTxtPass;
-    @BindView(R.id.loginBtn) Button mLoginButton;
-    @BindView(R.id.login_register) Button mLoginRegButton;
-    @BindView(R.id.forget_pass) Button mLoginForgetPassButton;
+    @BindView(R.id.login_progress)
+    ProgressBar mProgressBar;
+    @BindView(R.id.emailEdtTxt)
+    EditText mEdtTxtEmail;
+    @BindView(R.id.passEdtTxt)
+    EditText mEdtTxtPass;
+    @BindView(R.id.loginBtn)
+    Button mLoginButton;
+    @BindView(R.id.login_register)
+    Button mLoginRegButton;
+    @BindView(R.id.forget_pass)
+    Button mLoginForgetPassButton;
 
     private LoginPresenterMvp mLoginPresenterMvp;
 
@@ -57,8 +65,9 @@ public class LoginActivity extends AppCompatActivity implements LoginMvpView {
 
     @OnClick(R.id.loginBtn)
     public void handleSignIn() {
-        if (mLoginPresenterMvp.isValifForm(mEdtTxtEmail.getText().toString(), mEdtTxtPass.getText().toString()))
-        mLoginPresenterMvp.validateLogin(mEdtTxtEmail.getText().toString(), mEdtTxtPass.getText().toString());
+        if (mLoginPresenterMvp.isValifForm(mEdtTxtEmail.getText().toString(), mEdtTxtPass.getText().toString())){
+            mLoginPresenterMvp.validateLogin(mEdtTxtEmail.getText().toString(), mEdtTxtPass.getText().toString());
+        }
     }
 
     @Override
@@ -67,16 +76,16 @@ public class LoginActivity extends AppCompatActivity implements LoginMvpView {
     }
 
     @Override
-    public void enableInputs(){
+    public void enableInputs() {
         setInputs(true);
     }
 
     @Override
-    public void disableInputs(){
+    public void disableInputs() {
         setInputs(false);
     }
 
-    private void setInputs(boolean enabeled){
+    private void setInputs(boolean enabeled) {
         mEdtTxtEmail.setEnabled(enabeled);
         mEdtTxtPass.setEnabled(enabeled);
         mLoginButton.setEnabled(enabeled);
@@ -84,26 +93,26 @@ public class LoginActivity extends AppCompatActivity implements LoginMvpView {
         mLoginRegButton.setEnabled(enabeled);
     }
 
-    public void navigateToMainScreen(){
+    public void navigateToMainScreen() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
     @OnClick(R.id.login_register)
     @Override
-    public void navigateToRegisterScreen(){
-        startActivity(new Intent(this,RegisterActivity.class));
+    public void navigateToRegisterScreen() {
+        startActivity(new Intent(this, RegisterActivity.class));
         finish();
     }
 
     @OnClick(R.id.forget_pass)
     @Override
-    public void navigateToForgetPassScreen(){
-        startActivity(new Intent(this,ForgetPassActivity.class));
+    public void navigateToForgetPassScreen() {
+        startActivity(new Intent(this, ForgetPassActivity.class));
     }
 
     @Override
-    public void showMessage(String message){
+    public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

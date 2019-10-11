@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.tiunida.laundry0.FragmentHistory.HistoryFragment;
+import com.tiunida.laundry0.FragmentHistory.View.HistoryFragment;
 
 public class PageAdapter extends FragmentStatePagerAdapter {
 
