@@ -10,7 +10,6 @@ public class OrderDetailEvents {
 
     private int eventType;
     private String errorMessage;
-
     private String dataWeight, dataPrice, dataPriceDiskon, dataDiskon;
     private String dataAccept;
     private String dataOnProses;

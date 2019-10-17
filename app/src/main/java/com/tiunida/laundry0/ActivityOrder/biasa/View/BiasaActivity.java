@@ -969,10 +969,23 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
     @Override
     @OnClick(R.id.bandana_min)
     public void bandanaMinOnclick() {
-        mBandanaInt = mBandanaInt - 1;
-        if (mBandanaInt < 1)
-            mBandanaInt = 0;
+//        mBandanaInt = mBandanaInt - 1;
+//        if (mBandanaInt < 1)
+//            mBandanaInt = 0;
+//        mBandanaNum.setText("" + mBandanaInt);
+//        mBandanaInt = mBandanaInt - 1;
+//        if (mBandanaInt < 1)
+//            mBandanaInt = 0;
+        mBandanaInt = pls(mBandanaInt);
         mBandanaNum.setText("" + mBandanaInt);
+    }
+
+    public int pls(int item){
+//        int item = 0;
+        item = item - 1;
+        if (item < 1)
+            item = 0;
+        return item;
     }
 
     @Override

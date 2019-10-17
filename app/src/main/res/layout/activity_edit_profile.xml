@@ -113,7 +113,7 @@
                                         android:id="@+id/edit_profile_name"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:hint="Name"
+                                        android:hint="Nama"
                                         android:inputType="textPersonName"
                                         android:textSize="14sp" />
 
@@ -161,7 +161,7 @@
                                         android:id="@+id/edit_profile_dormitory"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:hint="Dormitory"
+                                        android:hint="Asrama"
                                         android:inputType="text"
                                         android:textSize="14sp" />
 
@@ -185,7 +185,7 @@
                                         android:id="@+id/edit_profile_room_number"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:hint="Room Number"
+                                        android:hint="Kamar"
                                         android:inputType="number"
                                         android:textSize="14sp" />
 
@@ -209,7 +209,7 @@
                                         android:id="@+id/edit_profile_phone_number"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:hint="Phone Number"
+                                        android:hint="Nomor Telepon"
                                         android:inputType="phone"
                                         android:textSize="14sp" />
 
@@ -272,6 +272,6 @@
         android:layout_marginRight="10dp"
         android:layout_marginBottom="10dp"
         android:background="@drawable/background_buttom_save"
-        android:text="SAVE"
+        android:text="SIMPAN"
         android:textColor="@color/backgroundApp" />
 </RelativeLayout>

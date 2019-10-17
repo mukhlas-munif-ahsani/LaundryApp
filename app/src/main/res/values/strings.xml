@@ -24,7 +24,7 @@
     <string name="express_btn">EXPRESS</string>
     <string name="kilat_btn">KILAT</string>
     <string name="desc_text">Catatan...</string>
-    <string name="confirm_order_btn">CONFIRM</string>
+    <string name="confirm_order_btn">KONFIRMASI</string>
     <string name="detail_jumlah_pakaian">Detail Jumlah Pakaian</string>
     <string name="alamat_pengiriman">Alamat Pengiriman</string>
     <string name="waktu_selesai">Waktu Selesai</string>

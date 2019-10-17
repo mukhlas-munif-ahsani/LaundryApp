@@ -73,7 +73,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="24dp"
-                        android:text="02301198226"
+                        android:text="-"
                         android:textColor="@color/biruLaut"
                         android:textStyle="bold" />
                 </RelativeLayout>
@@ -98,7 +98,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="4dp"
-                            android:text="Sun, 3 jan 19"
+                            android:text="-"
                             android:textColor="@color/biruLaut"
                             android:textSize="11dp" />
 
@@ -109,7 +109,7 @@
                             android:layout_alignParentBottom="true"
                             android:layout_marginEnd="4dp"
                             android:layout_marginBottom="22dp"
-                            android:text="Sun, 3 jan 19"
+                            android:text="-"
                             android:textColor="@color/biruLaut"
                             android:textSize="11dp" />
                     </RelativeLayout>
@@ -214,7 +214,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/acceptedTxt"
                             android:layout_marginStart="4dp"
-                            android:text="Your clothes have been taken and will be processed"
+                            android:text="Pakaian andan telah diambiloleh staff U3 dan akan segera dicuci"
                             android:textColor="@color/biruLaut"
                             android:textSize="11dp"
                             android:textStyle="italic" />
@@ -234,7 +234,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/prosesTxt"
                             android:layout_marginStart="4dp"
-                            android:text="Your clothes have been  processed"
+                            android:text="Pakaian anda sedang dalam proses pencucian"
                             android:textColor="@color/biruLaut"
                             android:textSize="11dp"
                             android:textStyle="italic" />
@@ -254,7 +254,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/doneTxt"
                             android:layout_marginStart="4dp"
-                            android:text="Your clothes have been washed and ready to be delivered"
+                            android:text="Pakaian anda telah selesai dicuci dan akan segera diantarkan kembali"
                             android:textColor="@color/biruLaut"
                             android:textSize="11dp"
                             android:textStyle="italic" />
@@ -274,7 +274,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/paidTxt"
                             android:layout_marginStart="4dp"
-                            android:text="your clothes have been paid off"
+                            android:text="Pakaian anda telah selesai dibayar"
                             android:textColor="@color/biruLaut"
                             android:textSize="11dp"
                             android:textStyle="italic" />
@@ -294,7 +294,7 @@
                             android:layout_height="wrap_content"
                             android:layout_below="@+id/deliveredTxt"
                             android:layout_marginStart="4dp"
-                            android:text="your clothes have been delivered"
+                            android:text="Pakaian anda telah selesai diantar"
                             android:textColor="@color/biruLaut"
                             android:textSize="11dp"
                             android:textStyle="italic" />
@@ -576,7 +576,7 @@
                     android:layout_below="@+id/confirmDeliverBtn"
                     android:background="@color/putih"
                     android:enabled="false"
-                    android:text="ASK ADMIN"
+                    android:text="TANYA ADMIN"
                     android:textColor="@color/biruLaut" />
 
             </RelativeLayout>

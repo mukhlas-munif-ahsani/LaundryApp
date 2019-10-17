@@ -243,6 +243,7 @@
         android:id="@+id/satu"
         android:layout_width="match_parent"
         android:layout_height="90dp"
+        android:visibility="gone"
         android:layout_below="@+id/view12"
         android:layout_marginStart="14dp"
         android:layout_marginTop="15dp"

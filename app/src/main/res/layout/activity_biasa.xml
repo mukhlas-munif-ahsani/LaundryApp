@@ -109,7 +109,7 @@
                         android:layout_marginStart="70dp"
                         android:layout_marginTop="8dp"
                         android:layout_toEndOf="@id/detailPesanan1"
-                        android:text="Laundry Normal"
+                        android:text="Laundry Biasa"
                         android:textSize="12sp"
                         android:textStyle="bold" />
 

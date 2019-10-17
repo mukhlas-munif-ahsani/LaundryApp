@@ -197,14 +197,14 @@ public class ProfileFragment extends Fragment implements ProfileFragmentViewMvp{
         // set pesan dari dialog
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("Siap udah", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol diklik, maka akan menutup activity ini
                         mAuth.signOut();
                         sendToLogin();
                     }
                 })
-                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol ini diklik, akan menutup dialog
                         // dan tidak terjadi apa2

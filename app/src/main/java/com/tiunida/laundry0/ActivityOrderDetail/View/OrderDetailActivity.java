@@ -300,23 +300,12 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     private void openWhatsApp() {
         String smsNumber = "6282301198226"; // E164 format without '+' sign
-//        Intent sendIntent = new Intent(Intent.ACTION_SEND);
-//        sendIntent.setType("text/plain");
-//        sendIntent.putExtra(Intent.EXTRA_TEXT, "This is my text to send.");
-//        sendIntent.putExtra("jid", smsNumber + "@s.whatsapp.net"); //phone number without "+" prefix
-//        sendIntent.setPackage("com.whatsapp");
-////        if (intent.resolveActivity(getActivity().getPackageManager()) == null) {
-////            Toast.makeText(this, "Error/n" + e.toString(), Toast.LENGTH_SHORT).show();
-////            return;
-////        }
-//        startActivity(sendIntent);
-
         PackageManager pm=getPackageManager();
         try {
 
             Intent waIntent = new Intent(Intent.ACTION_SEND);
             waIntent.setType("text/plain");
-            String text = "YOUR TEXT HERE";
+            String text = "Assalamualaikum...";
 
             PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
             //Check if package exists or not. If not then code
@@ -351,17 +340,6 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     public void setAskAdminBtnDisable(){
         askAdminBtn.setEnabled(false);
-    }
-
-    private void sendWhatsapp(String message) {
-        Intent sendIntent = new Intent();
-        sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_TEXT, message);
-        sendIntent.setType("text/plain");
-        sendIntent.setPackage("com.whatsapp");
-        if (sendIntent.resolveActivity(getPackageManager()) != null) {
-            startActivity(sendIntent);
-        }
     }
 
     @OnClick(R.id.confirmPaidBtn)
