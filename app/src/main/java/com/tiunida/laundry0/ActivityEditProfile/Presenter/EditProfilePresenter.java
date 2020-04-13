@@ -21,6 +21,7 @@ public class EditProfilePresenter implements EditProfilePresenterMvp{
         mEventBus = GreenRobotEventBus.getInstance();
     }
 
+
     @Override
     public void onCreate(){
         mEventBus.register(this);

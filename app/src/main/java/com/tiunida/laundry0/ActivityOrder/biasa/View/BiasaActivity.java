@@ -1002,6 +1002,7 @@ public class BiasaActivity extends AppCompatActivity implements BiasaViewMvp {
         if (mTopiInt < 1)
             mTopiInt = 0;
         mTopiNum.setText("" + mTopiInt);
+        mTopiMin.setVisibility(View.INVISIBLE);
     }
 
     @Override

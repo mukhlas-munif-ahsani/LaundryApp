@@ -46,49 +46,6 @@ public class RegisterPresenter implements RegisterPresenterMvp {
         mEventBus.unregister(this);
     }
 
-//    @Override
-//    public void registerUser(String email, String pass, String confirmPass) {
-//
-//        final ProgressDialog dialog = new ProgressDialog(mContect);
-//        dialog.setMessage("loding");
-//        dialog.setCancelable(false);
-//        dialog.show();
-//
-//        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(pass) && !TextUtils.isEmpty(confirmPass)){
-//            if (pass.equals(confirmPass)){
-//
-//                mAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//
-//                        if (task.isSuccessful()){
-//
-//                            dialog.dismiss();
-//                            Log.d(TAG, "signInWithEmail:success");
-//
-//                            Intent setupIntent = new Intent(mContect, SetupActivity.class);
-//                            mContect.startActivity(setupIntent);
-//
-//                        }else {
-//                            dialog.dismiss();
-//                            Log.w(TAG, "signInWithEmail:failure", task.getException());
-//
-//                            String errorMessage = task.getException().getMessage();
-//                            Toast.makeText(mContect, "Error : " + errorMessage, Toast.LENGTH_LONG).show();
-//
-//                        }
-//
-//
-//                    }
-//                });
-//
-//            }else {
-//                Toast.makeText(mContect, "confirm password and password confirm doesn't match", Toast.LENGTH_LONG).show();
-//            }
-//        }
-//
-//        }
-
     @Override
     @Subscribe
     public void onEventMainThread(RegisterEvent event){
@@ -148,7 +105,6 @@ public class RegisterPresenter implements RegisterPresenterMvp {
 
     @Override
     public void validateRegister(String email, String password){
-        mRegisterViewMvp.showMessage("masuk on validate");
         if (mRegisterViewMvp != null){
             mRegisterViewMvp.disableInputs();
             mRegisterViewMvp.showProgress();

@@ -1,5 +1,7 @@
 package com.tiunida.laundry0.ActivityLogin.View;
 
+import com.tiunida.laundry0.ActivityLogin.Presenter.LoginPresenter;
+
 public interface LoginMvpView{
 
     void showProgress();
@@ -12,4 +14,5 @@ public interface LoginMvpView{
     void navigateToForgetPassScreen();
     void showMessage(String message);
 
+    void setPresenter(LoginPresenter loginPresenter);
 }

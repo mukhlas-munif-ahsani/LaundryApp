@@ -8,11 +8,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
+import com.tiunida.laundry0.ActivitySetup.View.SetupActivity;
 import com.tiunida.laundry0.R;
 import com.tiunida.laundry0.ActivityEditProfile.Presenter.EditProfilePresenter;
 import com.tiunida.laundry0.ActivityEditProfile.Presenter.EditProfilePresenterMvp;
@@ -25,24 +29,36 @@ import butterknife.OnClick;
 
 public class EditProfileActivity extends AppCompatActivity implements EditProfileViewMvp {
 
-    @BindView(R.id.edit_profile_progress)
-    ProgressBar mEditProfileProgres;
-    @BindView(R.id.edit_profile_name)
-    EditText mEditProfileName;
-    @BindView(R.id.edit_profile_nim)
-    EditText mEditProfileNim;
-    @BindView(R.id.edit_profile_dormitory)
-    EditText mEditProfileDormitory;
-    @BindView(R.id.edit_profile_room_number)
-    EditText mEditProfileRoom;
-    @BindView(R.id.edit_profile_phone_number)
-    EditText mEditProfilePhone;
-    @BindView(R.id.edit_profile_status)
-    MaterialBetterSpinner mEditProfileStatus;
-    @BindView(R.id.edit_profile_gender)
-    MaterialBetterSpinner mEditProfileGender;
-    @BindView(R.id.edit_profile_btn_save)
-    Button mEditProfileBtnSave;
+    @BindView(R.id.text_input_name)
+    TextInputLayout mTextInputName;
+    @BindView(R.id.text_input_dormitory)
+    TextInputLayout mTextInputDormitory;
+    @BindView(R.id.text_input_room)
+    TextInputLayout mTextInputRoom;
+    @BindView(R.id.text_input_phone_number)
+    TextInputLayout mTextInputPhoneNumber;
+    @BindView(R.id.text_input_status)
+    TextInputLayout mTextInputStatus;
+    @BindView(R.id.text_input_gender)
+    TextInputLayout mTextInputGender;
+
+    @BindView(R.id.profile_name)
+    TextInputEditText mProfileName;
+    @BindView(R.id.dropdown_text)
+    AutoCompleteTextView mDropdownDormitory;
+    @BindView(R.id.profile_room)
+    TextInputEditText mProfileRoom;
+    @BindView(R.id.profile_phone_number)
+    TextInputEditText mProfilePhone;
+    @BindView(R.id.dropdown_text_status)
+    AutoCompleteTextView mDropdownStatus;
+    @BindView(R.id.dropdown_text_gender)
+    AutoCompleteTextView mDropdownGender;
+    @BindView(R.id.setup_progress)
+    ProgressBar mSetupProgres;
+
+    @BindView(R.id.setup_btn)
+    Button mSaveBtn;
 
     private boolean isChanged = false;
     String status = "";
@@ -63,49 +79,92 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
 
         getDataProfile();
 
-        ArrayAdapter<String> arrayAdapterStatus = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,SPINNERLIST_STATUS);
+        String[] dormitoryItems = new String[]{
+                "Ustman bin Affan",
+                "Abu Bakar",
+                "Umar bin Khatab",
+                "Ali bin Abi Thalib"
+        };
 
-        mEditProfileStatus.setAdapter(arrayAdapterStatus);
+        String[] statusItems = new String[]{
+                "Mahasiswa",
+                "Staff",
+                "Dosen",
+                "Tamu"
+        };
 
-        mEditProfileStatus.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        String[] genderItems = new String[]{
+                "MALE",
+                "FEMALE"
+        };
 
-            }
+        ArrayAdapter<String> dormitoryAdapter = new ArrayAdapter<>(
+                EditProfileActivity.this,
+                R.layout.dropdown_item_dormitory,
+                dormitoryItems
+        );
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(
+                EditProfileActivity.this,
+                R.layout.dropdown_item_status,
+                statusItems
+        );
 
-            }
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(
+                EditProfileActivity.this,
+                R.layout.dropdown_item_gender,
+                genderItems
+        );
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-                status = mEditProfileStatus.getText().toString();
-            }
-        });
+        mDropdownDormitory.setAdapter(dormitoryAdapter);
 
-        ArrayAdapter<String> arrayAdapterGender = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,SPINNERLIST_GENDER);
+        mDropdownStatus.setAdapter(statusAdapter);
 
-        mEditProfileGender.setAdapter(arrayAdapterGender);
+        mDropdownGender.setAdapter(genderAdapter);
 
-        mEditProfileGender.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                gender = mEditProfileGender.getText().toString();
-            }
-        });
+//        ArrayAdapter<String> arrayAdapterStatus = new ArrayAdapter<>(this,
+//                android.R.layout.simple_list_item_1,SPINNERLIST_STATUS);
+//
+//        mEditProfileStatus.setAdapter(arrayAdapterStatus);
+//
+//        mEditProfileStatus.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                status = mEditProfileStatus.getText().toString();
+//            }
+//        });
+//
+//        ArrayAdapter<String> arrayAdapterGender = new ArrayAdapter<>(this,
+//                android.R.layout.simple_list_item_1,SPINNERLIST_GENDER);
+//
+//        mEditProfileGender.setAdapter(arrayAdapterGender);
+//
+//        mEditProfileGender.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                gender = mEditProfileGender.getText().toString();
+//            }
+//        });
     }
 
     @Override
@@ -119,11 +178,11 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
     }
 
     public void hideProgress(){
-        mEditProfileProgres.setVisibility(View.INVISIBLE);
+        mSetupProgres.setVisibility(View.INVISIBLE);
     }
 
     public void showProgress(){
-        mEditProfileProgres.setVisibility(View.VISIBLE);
+        mSetupProgres.setVisibility(View.VISIBLE);
     }
 
     public void navigateToMainScreen(){
@@ -138,14 +197,13 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
     }
 
     public void setInputs(boolean enabeled){
-        mEditProfileBtnSave.setEnabled(enabeled);
-        mEditProfileGender.setEnabled(enabeled);
-        mEditProfileStatus.setEnabled(enabeled);
-        mEditProfileName.setEnabled(enabeled);
-        mEditProfileNim.setEnabled(enabeled);
-        mEditProfileDormitory.setEnabled(enabeled);
-        mEditProfileRoom.setEnabled(enabeled);
-        mEditProfilePhone.setEnabled(enabeled);
+        mSaveBtn.setEnabled(enabeled);
+        mDropdownGender.setEnabled(enabeled);
+        mDropdownStatus.setEnabled(enabeled);
+        mProfileName.setEnabled(enabeled);
+        mDropdownDormitory.setEnabled(enabeled);
+        mProfileRoom.setEnabled(enabeled);
+        mProfilePhone.setEnabled(enabeled);
     }
 
     public void enableInputs(boolean enabeled){
@@ -157,46 +215,46 @@ public class EditProfileActivity extends AppCompatActivity implements EditProfil
     }
 
     public void nameFieldError(String errorMsg){
-        mEditProfileName.setError(errorMsg);
+        mTextInputName.setError(errorMsg);
     }
 
     public void nimFieldError(String errorMsg){
-        mEditProfileNim.setError(errorMsg);
+        //mEditProfileNim.setError(errorMsg);
     }
 
     public void dormitoryFieldError(String errorMsg){
-        mEditProfileDormitory.setError(errorMsg);
+        mTextInputDormitory.setError(errorMsg);
     }
 
     public void roomFieldError(String errorMsg){
-        mEditProfileRoom.setError(errorMsg);
+        mTextInputRoom.setError(errorMsg);
     }
 
     public void phoneFieldError(String errorMsg){
-        mEditProfilePhone.setError(errorMsg);
+        mTextInputPhoneNumber.setError(errorMsg);
     }
 
-    @OnClick(R.id.edit_profile_btn_save)
+    @OnClick(R.id.setup_btn)
     public void saveInput(){
-        final String user_name = mEditProfileName.getText().toString();
-        final String user_nim = mEditProfileNim.getText().toString();
-        final String user_dormitory = mEditProfileDormitory.getText().toString();
-        final String user_room = mEditProfileRoom.getText().toString();
-        final String user_phone = mEditProfilePhone.getText().toString();
-        final String user_status = status;
-        final String user_gender = gender;
+        final String user_name = mProfileName.getText().toString();
+        //final String user_nim = mEditProfileNim.getText().toString();
+        final String user_dormitory = mDropdownDormitory.getText().toString();
+        final String user_room = mProfileRoom.getText().toString();
+        final String user_phone = mProfilePhone.getText().toString();
+        final String user_status = mDropdownStatus.getText().toString();
+        final String user_gender = mDropdownGender.getText().toString();
 
         mEditProfilePresenterMvp.validateInput(user_name,user_dormitory,user_room,user_phone,user_gender,user_status);
     }
 
     public void setData(String dataName, String dataDormitory, String dataRoom, String dataPhone, String dataStatus, String dataGender){
-        mEditProfileName.setText(dataName);
+        mProfileName.setText(dataName);
        // mEditProfileNim.setText(dataNim);
-        mEditProfileDormitory.setText(dataDormitory);
-        mEditProfileRoom.setText(dataRoom);
-        mEditProfilePhone.setText(dataPhone);
-        mEditProfileStatus.setText(dataStatus);
-        mEditProfileGender.setText(dataGender);
+        mDropdownDormitory.setText(dataDormitory);
+        mProfileRoom.setText(dataRoom);
+        mProfilePhone.setText(dataPhone);
+        mDropdownStatus.setText(dataStatus);
+        mDropdownGender.setText(dataGender);
     }
 
 }

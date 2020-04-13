@@ -83,7 +83,6 @@ public class SaranRepository implements SaranRepositoryMvp{
     public void postEvent(int type, String errorMessage, String dataName) {
         SaranEvents saranEvents = new SaranEvents();
         saranEvents.setEventType(type);
-        Log.d("masuk post", "masuk post event succes not null");
         if (errorMessage == null) {
             saranEvents.setErrorMessage(errorMessage);
         }

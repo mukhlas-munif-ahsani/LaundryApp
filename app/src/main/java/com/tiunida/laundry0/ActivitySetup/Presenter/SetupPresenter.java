@@ -64,7 +64,7 @@ public class SetupPresenter implements SetupPresenterMvp {
     }
 
     public void validateInput(String name, String dormitory, String room, String phone, String gender, String status){
-        if (!validateName(name)  | !validateDormitory(dormitory) | !validateRoom(room) | !validatePhoneNumber(phone)) {
+        if (!validateName(name)  | !validateDormitory(dormitory) | !validateRoom(room) | !validatePhoneNumber(phone) | !validateStatus(status) | !validateGender(gender)) {
             return;
         }
 
@@ -136,6 +136,26 @@ public class SetupPresenter implements SetupPresenterMvp {
 
         }else {
             mSetupViewMvp.roomFieldError(null);
+            return true;
+        }
+    }
+
+    private boolean validateStatus(String statusInput) {
+        if (statusInput.isEmpty()) {
+            mSetupViewMvp.statusFieldError("Field can't be empty");
+            return false;
+        } else {
+            mSetupViewMvp.statusFieldError(null);
+            return true;
+        }
+    }
+
+    private boolean validateGender(String genderInput) {
+        if (genderInput.isEmpty()) {
+            mSetupViewMvp.genderFieldError("Field can't be empty");
+            return false;
+        } else {
+            mSetupViewMvp.genderFieldError(null);
             return true;
         }
     }

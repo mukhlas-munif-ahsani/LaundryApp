@@ -29,36 +29,39 @@
             android:layout_height="wrap_content"
             android:paddingBottom="20dp">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/log_out"
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/view14"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_centerHorizontal="true"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginEnd="24dp"
-                android:background="@drawable/btn_logout_border"
                 android:enabled="false"
                 android:text="Log out"
-                android:layout_below="@+id/view14"
                 android:textColor="@color/merah"
-                android:layout_centerHorizontal="true"
-                />
+                android:textSize="12sp"
+                app:strokeColor="@color/merah"
+                app:cornerRadius="20dp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_toEndOf="@+id/imageProfile"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="25dp"
+                android:layout_toEndOf="@+id/imageProfile">
+
                 <Button
                     android:id="@+id/edit_profile"
-                    style="?android:attr/borderlessButtonStyle"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="100dp"
                     android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
                     android:background="@color/putih"
                     android:enabled="false"
                     android:text="Edit profil"
-                    android:textColor="@color/biruLaut"
-                    android:layout_centerHorizontal="true" />
+                    android:textColor="@color/biruLaut" />
             </RelativeLayout>
 
 
@@ -79,225 +82,238 @@
                 android:id="@+id/imageProfile"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:layout_marginTop="14dp"
-                android:visibility="invisible"
-                android:layout_centerHorizontal="true"
                 android:layout_alignParentTop="true"
-                android:src="@drawable/default_image" />
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="14dp"
+                android:src="@drawable/default_image"
+                android:visibility="invisible" />
 
             <TextView
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/imageProfile"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="8dp"
                 android:text="Nama"
-                android:textSize="12sp"
-                android:layout_below="@+id/imageProfile" />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/profile_profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textView3"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="8dp"
                 android:text="--"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:layout_below="@+id/textView3" />
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
             <View
                 android:id="@+id/view3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/profile_profile_name"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/profile_profile_name" />
+                android:background="@android:color/darker_gray" />
 
             <TextView
-                android:visibility="gone"
                 android:id="@+id/textView4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/view3"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="8dp"
                 android:text="NIM"
                 android:textSize="12sp"
-                android:layout_below="@+id/view3" />
+                android:visibility="gone" />
+
             <TextView
-                android:visibility="gone"
                 android:id="@+id/profile_profile_nim"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textView4"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="8dp"
                 android:text="--"
                 android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:layout_below="@+id/textView4" />
+                android:visibility="gone" />
+
             <View
-                android:visibility="gone"
                 android:id="@+id/view4"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/profile_profile_nim"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="24dp"
                 android:background="@android:color/darker_gray"
-                android:layout_below="@+id/profile_profile_nim" />
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/view4"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="8dp"
                 android:text="Asrama"
-                android:textSize="12sp"
-                android:layout_below="@+id/view4" />
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/profile_profile_dormitory"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textView5"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="8dp"
                 android:text="--"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:layout_below="@+id/textView5" />
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
             <View
                 android:id="@+id/view5"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/profile_profile_dormitory"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/profile_profile_dormitory" />
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/view5"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="8dp"
                 android:text="Kamar"
-                android:textSize="12sp"
-                android:layout_below="@+id/view5" />
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/profile_profile_room"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textView6"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="8dp"
                 android:text="--"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:layout_below="@+id/textView6" />
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
             <View
                 android:id="@+id/view6"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/profile_profile_room"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/profile_profile_room" />
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/view6"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="8dp"
                 android:text="No Telepon"
-                android:textSize="12sp"
-                android:layout_below="@+id/view6" />
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/profile_profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textView7"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="8dp"
                 android:text="--"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:layout_below="@+id/textView7" />
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
             <View
                 android:id="@+id/view7"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/profile_profile_phone"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/profile_profile_phone" />
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/view7"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="8dp"
                 android:text="Status"
-                android:textSize="12sp"
-                android:layout_below="@+id/view7" />
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/profile_profile_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textView8"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="8dp"
                 android:text="--"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:layout_below="@+id/textView8" />
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
             <View
                 android:id="@+id/view8"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/profile_profile_status"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/profile_profile_status" />
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/view8"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="17dp"
                 android:layout_marginEnd="8dp"
                 android:text="Gender"
-                android:textSize="12sp"
-                android:layout_below="@+id/view8" />
+                android:textSize="12sp" />
+
             <TextView
                 android:id="@+id/profile_profile_gender"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@+id/textView9"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="6dp"
                 android:layout_marginEnd="8dp"
                 android:text="--"
-                android:textColor="@color/common_google_signin_btn_text_dark_focused"
-                android:layout_below="@+id/textView9" />
+                android:textColor="@color/common_google_signin_btn_text_dark_focused" />
+
             <View
                 android:id="@+id/view9"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/profile_profile_gender"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/profile_profile_gender" />
+                android:background="@android:color/darker_gray" />
 
             <TextView
                 android:id="@+id/tentangTxt"
@@ -314,105 +330,113 @@
 
             <Button
                 android:id="@+id/tentangAppBtn"
-                android:layout_below="@+id/tentangTxt"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="Tentang Aplikasi"
-                android:paddingStart="24dp"
+                android:layout_below="@+id/tentangTxt"
                 android:gravity="left|center_vertical"
-                android:textAllCaps="false"/>
+                android:paddingStart="24dp"
+                android:text="Tentang Aplikasi"
+                android:textAllCaps="false"
+                android:textColor="@color/biruLaut"
+                android:textSize="12sp" />
 
             <View
                 android:id="@+id/view10"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/tentangAppBtn"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/tentangAppBtn" />
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/syaratDanKetentuanBtn"
-                android:layout_below="@+id/view10"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="Syarat dan Keterntuan"
-                android:paddingStart="24dp"
+                android:layout_below="@+id/view10"
                 android:gravity="left|center_vertical"
-                android:textAllCaps="false"/>
+                android:paddingStart="24dp"
+                android:text="Syarat dan Keterntuan"
+                android:textAllCaps="false"
+                android:textColor="@color/biruLaut"
+                android:textSize="12sp" />
 
             <View
                 android:id="@+id/view11"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/syaratDanKetentuanBtn"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/syaratDanKetentuanBtn" />
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/bantuanBtn"
-                android:layout_below="@+id/view11"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="Pusat Bantuan"
-                android:visibility="gone"
-                android:paddingStart="24dp"
+                android:layout_below="@+id/view11"
                 android:gravity="left|center_vertical"
-                android:textAllCaps="false"/>
+                android:paddingStart="24dp"
+                android:text="Pusat Bantuan"
+                android:textAllCaps="false"
+                android:visibility="gone" />
 
             <View
                 android:id="@+id/view12"
                 android:layout_width="match_parent"
-                android:visibility="gone"
                 android:layout_height="1dp"
+                android:layout_below="@+id/bantuanBtn"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
                 android:background="@android:color/darker_gray"
-                android:layout_below="@+id/bantuanBtn" />
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/saranBtn"
-                android:layout_below="@+id/view12"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="Saran"
-                android:paddingStart="24dp"
+                android:layout_below="@+id/view12"
                 android:gravity="left|center_vertical"
-                android:textAllCaps="false"/>
+                android:paddingStart="24dp"
+                android:text="Saran"
+                android:textAllCaps="false"
+                android:textColor="@color/biruLaut"
+                android:textSize="12sp" />
 
             <View
                 android:id="@+id/view13"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/saranBtn"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/saranBtn" />
+                android:background="@android:color/darker_gray" />
 
             <Button
                 android:id="@+id/hubungiBtn"
-                android:layout_below="@+id/view13"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                style="?android:attr/borderlessButtonStyle"
-                android:text="Hubungi"
-                android:paddingStart="24dp"
+                android:layout_below="@+id/view13"
                 android:gravity="left|center_vertical"
-                android:textAllCaps="false"/>
+                android:paddingStart="24dp"
+                android:text="Hubungi"
+                android:textAllCaps="false"
+                android:textColor="@color/biruLaut"
+                android:textSize="12sp" />
 
             <View
                 android:id="@+id/view14"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
+                android:layout_below="@+id/hubungiBtn"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                android:background="@android:color/darker_gray"
-                android:layout_below="@+id/hubungiBtn" />
+                android:background="@android:color/darker_gray" />
         </RelativeLayout>
     </ScrollView>
 </LinearLayout>

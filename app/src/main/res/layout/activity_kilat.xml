@@ -411,10 +411,12 @@
                         android:id="@+id/confirm_btn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/putih"
-                        android:padding="8dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginBottom="8dp"
+                        android:backgroundTint="@color/biruLaut"
                         android:text="@string/confirm_order_btn"
-                        android:textColor="@color/biruLaut" />
+                        android:textColor="@color/putih" />
                 </LinearLayout>
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

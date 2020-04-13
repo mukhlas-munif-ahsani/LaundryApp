@@ -40,6 +40,10 @@ public class LoginActivity extends AppCompatActivity implements LoginMvpView {
 
     private LoginPresenterMvp mLoginPresenterMvp;
 
+    @Override
+    public void setPresenter(LoginPresenter loginPresenter) {
+        this.mLoginPresenterMvp = loginPresenter;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,5 +119,7 @@ public class LoginActivity extends AppCompatActivity implements LoginMvpView {
     public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
+
 
 }

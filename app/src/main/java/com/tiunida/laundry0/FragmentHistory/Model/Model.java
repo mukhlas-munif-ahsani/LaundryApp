@@ -1,7 +1,7 @@
 package com.tiunida.laundry0.FragmentHistory.Model;
 
 public class Model {
-    String a_time, a_waktu_selesai;
+    String a_time, a_weight, a_waktu_selesai;
 
     String h_accepted2, h_delivered2, h_delivered2Confirm, h_done2, h_on_proses2, h_paid2, h_paid2Confirm, a_price2, a_diskon, a_jenis;
 
@@ -9,8 +9,9 @@ public class Model {
 
     }
 
-    public Model(String a_time, String a_waktu_selesai, String h_accepted2, String h_delivered2, String h_delivered2Confirm, String h_done2, String h_on_proses2, String h_paid2, String h_paid2Confirm, String a_price2, String a_diskon, String a_jenis) {
+    public Model(String a_time, String a_weight, String a_waktu_selesai, String h_accepted2, String h_delivered2, String h_delivered2Confirm, String h_done2, String h_on_proses2, String h_paid2, String h_paid2Confirm, String a_price2, String a_diskon, String a_jenis) {
         this.a_time = a_time;
+        this.a_weight = a_weight;
         this.a_waktu_selesai = a_waktu_selesai;
         this.h_accepted2 = h_accepted2;
         this.h_delivered2 = h_delivered2;
@@ -22,6 +23,10 @@ public class Model {
         this.a_price2 = a_price2;
         this.a_diskon = a_diskon;
         this.a_jenis = a_jenis;
+    }
+
+    public String getA_weight() {
+        return a_weight;
     }
 
     public String getH_delivered2Confirm() {

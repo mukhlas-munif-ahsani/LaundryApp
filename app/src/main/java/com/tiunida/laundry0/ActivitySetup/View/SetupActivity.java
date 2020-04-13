@@ -2,6 +2,7 @@ package com.tiunida.laundry0.ActivitySetup.View;
 
 import android.content.Intent;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -11,9 +12,11 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -37,34 +40,36 @@ import butterknife.OnClick;
 
 public class SetupActivity extends AppCompatActivity implements SetupViewMvp{
 
-    @BindView(R.id.setup_btn)
-    Button mSetupBtn;
-    @BindView(R.id.gender)
-    MaterialBetterSpinner mGender;
-    @BindView(R.id.status)
-    MaterialBetterSpinner mStatus;
-    @BindView(R.id.profile_name)
-    EditText mProfileName;
-    @BindView(R.id.profile_nim)
-    EditText mProfileNim;
-    @BindView(R.id.profile_dormitory)
-    EditText mProfileDormitory;
-    @BindView(R.id.profile_room_number)
-    EditText mProfileRoom;
-    @BindView(R.id.profile_phone_number)
-    EditText mProfilePhone;
     @BindView(R.id.text_input_name)
     TextInputLayout mTextInputName;
-    @BindView(R.id.text_input_nim)
-    TextInputLayout mTextInputNim;
     @BindView(R.id.text_input_dormitory)
     TextInputLayout mTextInputDormitory;
     @BindView(R.id.text_input_room)
     TextInputLayout mTextInputRoom;
     @BindView(R.id.text_input_phone_number)
     TextInputLayout mTextInputPhoneNumber;
+    @BindView(R.id.text_input_status)
+    TextInputLayout mTextInputStatus;
+    @BindView(R.id.text_input_gender)
+    TextInputLayout mTextInputGender;
+
+    @BindView(R.id.profile_name)
+    TextInputEditText mProfileName;
+    @BindView(R.id.dropdown_text)
+    AutoCompleteTextView mDropdownDormitory;
+    @BindView(R.id.profile_room)
+    TextInputEditText mProfileRoom;
+    @BindView(R.id.profile_phone_number)
+    TextInputEditText mProfilePhone;
+    @BindView(R.id.dropdown_text_status)
+    AutoCompleteTextView mDropdownStatus;
+    @BindView(R.id.dropdown_text_gender)
+    AutoCompleteTextView mDropdownGender;
     @BindView(R.id.setup_progress)
     ProgressBar mSetupProgres;
+
+    @BindView(R.id.setup_btn)
+    Button mSetupBtn;
 
     private boolean isChanged = false;
     String status = "";
@@ -92,52 +97,109 @@ public class SetupActivity extends AppCompatActivity implements SetupViewMvp{
         user_id = firebaseAuth.getCurrentUser().getUid();
         firebaseFirestore = FirebaseFirestore.getInstance();
 
-        ArrayAdapter<String> arrayAdapterStatus = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,SPINNERLIST_STATUS);
+        String[] dormitoryItems = new String[]{
+                "Ustman bin Affan",
+                "Abu Bakar",
+                "Umar bin Khatab",
+                "Ali bin Abi Thalib"
+        };
 
-        mStatus.setAdapter(arrayAdapterStatus);
+        String[] statusItems = new String[]{
+                "Mahasiswa",
+                "Staff",
+                "Dosen",
+                "Tamu"
+        };
 
-        mStatus.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        String[] genderItems = new String[]{
+                "MALE",
+                "FEMALE"
+        };
 
-            }
+        ArrayAdapter<String> dormitoryAdapter = new ArrayAdapter<>(
+                SetupActivity.this,
+                R.layout.dropdown_item_dormitory,
+                dormitoryItems
+        );
 
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        ArrayAdapter<String> statusAdapter = new ArrayAdapter<>(
+                SetupActivity.this,
+                R.layout.dropdown_item_status,
+                statusItems
+        );
 
-            }
+        ArrayAdapter<String> genderAdapter = new ArrayAdapter<>(
+                SetupActivity.this,
+                R.layout.dropdown_item_gender,
+                genderItems
+        );
 
-            @Override
-            public void afterTextChanged(Editable editable) {
-                status = mStatus.getText().toString();
-                Log.d("status_spinner: ", status);
-            }
-        });
+        mDropdownDormitory.setAdapter(dormitoryAdapter);
 
-        ArrayAdapter<String> arrayAdapterGender = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1,SPINNERLIST_GENDER);
+        mDropdownStatus.setAdapter(statusAdapter);
 
-        mGender.setAdapter(arrayAdapterGender);
+        mDropdownGender.setAdapter(genderAdapter);
 
-        mGender.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                gender = mGender.getText().toString();
-                Log.d("status_spinner: ", status);
-            }
-        });
-
+//        ArrayAdapter<String> arrayAdapterStatus = new ArrayAdapter<>(this,
+//                android.R.layout.simple_list_item_1,SPINNERLIST_STATUS);
+//
+//        mStatus.setAdapter(arrayAdapterStatus);
+//
+//        mStatus.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                status = mStatus.getText().toString();
+//                Log.d("status_spinner: ", status);
+//            }
+//        });
+//
+//        ArrayAdapter<String> arrayAdapterGender = new ArrayAdapter<>(this,
+//                android.R.layout.simple_list_item_1,SPINNERLIST_GENDER);
+//
+//        mGender.setAdapter(arrayAdapterGender);
+//
+//        mGender.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                gender = mGender.getText().toString();
+//                Log.d("status_spinner: ", status);
+//            }
+//        });
+//
+//        String[] items = new String[] {
+//          "Usmat bin Affan",
+//          "Ummar bin Khatab",
+//          "Abu Bakar",
+//          "Ali bin Abi Thalib"
+//        };
+//
+//        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+//                SetupActivity.this,
+//                R.layout.dropdown_menu,
+//                items
+//        );
+//
+//        mDropdownText.setAdapter(adapter);
 //        firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
 //            @Override
 //            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -208,7 +270,7 @@ public class SetupActivity extends AppCompatActivity implements SetupViewMvp{
     }
 
     public void nimFieldError(String errorMsg){
-        mTextInputNim.setError(errorMsg);
+        //mTextInputNim.setError(errorMsg);
     }
 
     public void dormitoryFieldError(String errorMsg){
@@ -221,6 +283,14 @@ public class SetupActivity extends AppCompatActivity implements SetupViewMvp{
 
     public void phoneFieldError(String errorMsg){
         mTextInputPhoneNumber.setError(errorMsg);
+    }
+
+    public void statusFieldError(String errorMsg){
+        mTextInputStatus.setError(errorMsg);
+    }
+
+    public void genderFieldError(String errorMsg){
+        mTextInputGender.setError(errorMsg);
     }
 
     @Override
@@ -239,14 +309,12 @@ public class SetupActivity extends AppCompatActivity implements SetupViewMvp{
     @Override
     public void confirmInput(){
         final String user_name = mProfileName.getText().toString();
-        //final String user_nim = mProfileNim.getText().toString();
-        final String user_dormitory = mProfileDormitory.getText().toString();
+        final String user_dormitory = mDropdownDormitory.getText().toString();
         final String user_room = mProfileRoom.getText().toString();
         final String user_phone = mProfilePhone.getText().toString();
-        final String user_status = status;
-        final String user_gender = gender;
+        final String user_status = mDropdownStatus.getText().toString();
+        final String user_gender = mDropdownGender.getText().toString();
 
-        //showMessage(mainImageURI.toString());
         mSetupPresenterMvp.validateInput(user_name,user_dormitory,user_room,user_phone,user_gender,user_status);
     }
 
@@ -263,13 +331,15 @@ public class SetupActivity extends AppCompatActivity implements SetupViewMvp{
 
     public void setInputs(boolean enabeled){
         mSetupBtn.setEnabled(enabeled);
-        mGender.setEnabled(enabeled);
-        mStatus.setEnabled(enabeled);
+        mDropdownGender.setEnabled(enabeled);
+        mDropdownStatus.setEnabled(enabeled);
         mProfileName.setEnabled(enabeled);
-        //mProfileNim.setEnabled(enabeled);
-        mProfileDormitory.setEnabled(enabeled);
+        mDropdownDormitory.setEnabled(enabeled);
         mProfileRoom.setEnabled(enabeled);
         mProfilePhone.setEnabled(enabeled);
+        mDropdownDormitory.setEnabled(enabeled);
+        mDropdownStatus.setEnabled(enabeled);
+        mDropdownGender.setEnabled(enabeled);
        }
 
     public void enableInputs(boolean enabeled){

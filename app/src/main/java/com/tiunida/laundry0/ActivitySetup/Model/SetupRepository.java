@@ -10,6 +10,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -20,29 +22,29 @@ import com.tiunida.laundry0.ActivitySetup.events.SetupEvent;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SetupRepository implements SetupRepositoryMvp{
+public class SetupRepository implements SetupRepositoryMvp {
 
     private StorageReference storageReference;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
     private String user_id;
     private Uri mainImageURI = null;
     private Uri mainImageURI2 = null;
     private boolean isChanged = false;
 
 
-    public SetupRepository(){
+    public SetupRepository() {
         storageReference = FirebaseStorage.getInstance().getReference();
-        firebaseAuth = FirebaseAuth.getInstance();
-        user_id = firebaseAuth.getCurrentUser().getUid();
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        user_id = mAuth.getCurrentUser().getUid();
+        mFirestore = FirebaseFirestore.getInstance();
     }
 
     @Override
-    public void input(Uri image,String user_name, String user_dormitory, String user_room, String user_phone, String user_gender, String user_status){
-        user_id = firebaseAuth.getCurrentUser().getUid();
-        if (isChanged){
-            if (!TextUtils.isEmpty(user_name) && mainImageURI != null){
+    public void input(Uri image, String user_name, String user_dormitory, String user_room, String user_phone, String user_gender, String user_status) {
+        user_id = mAuth.getCurrentUser().getUid();
+        if (isChanged) {
+            if (!TextUtils.isEmpty(user_name) && mainImageURI != null) {
                 final StorageReference image_path = storageReference.child("profile_images").child(user_id + ".jpg");
                 image_path.putFile(image).continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                     @Override
@@ -58,58 +60,68 @@ public class SetupRepository implements SetupRepositoryMvp{
                     }
                 })
                         .addOnCompleteListener(new OnCompleteListener<Uri>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Uri> task) {
-                        if (task.isSuccessful()) {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                if (task.isSuccessful()) {
 
-                            mainImageURI = image;
-                            mainImageURI2 = mainImageURI;
-                            //storeFirestore(task, user_name, user_nim,user_dormitory, user_room, user_phone, user_gender, user_status);
+                                    mainImageURI = image;
+                                    mainImageURI2 = mainImageURI;
+                                    //storeFirestore(task, user_name, user_nim,user_dormitory, user_room, user_phone, user_gender, user_status);
 
-                        } else {
-                            // Handle failures
-                            // ...
-                            String errorMessage = task.getException().getMessage();
-                            //Toast.makeText(SetupActivity.this, "Error :" + errorMessage, Toast.LENGTH_LONG).show();
-                            //postEvent(SetupEvent.onInputError,errorMessage);
+                                } else {
+                                    // Handle failures
+                                    // ...
+                                    String errorMessage = task.getException().getMessage();
+                                    //Toast.makeText(SetupActivity.this, "Error :" + errorMessage, Toast.LENGTH_LONG).show();
+                                    //postEvent(SetupEvent.onInputError,errorMessage);
 
-                            //setupProgress.setVisibility(View.INVISIBLE);
+                                    //setupProgress.setVisibility(View.INVISIBLE);
 
-                        }
-                    }
-                });
+                                }
+                            }
+                        });
             }
 
         }
-        //storeFirestore(null, user_name, user_nim,user_dormitory, user_room, user_phone, user_gender, user_status);
     }
 
     @Override
     public void storeFirestore(String user_name, String user_dormitory, String user_room, String user_phone, String gender, String status) {
 
-        Map<String, String> userMap2 = new HashMap<>();
-        userMap2.put("a_name", user_name);
-        //userMap2.put("b_nim" , user_nim);
-        userMap2.put("c_dormitory" , user_dormitory);
-        userMap2.put("d_room" , user_room);
-        userMap2.put("e_phone number" , user_phone);
-        userMap2.put("g_gender" , gender);
-        userMap2.put("f_status" , status);
-
-        firebaseFirestore.collection("Users").document(user_id)
-                .set(userMap2).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseInstanceId.getInstance().getInstanceId().addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
             @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()){
+            public void onComplete(@NonNull Task<InstanceIdResult> task) {
 
-                    postEvent(SetupEvent.onInputSuccess);
+                String token_id = task.getResult().getToken();
 
-                }else {
-                    String errorMessage = task.getException().getMessage();
-                    postEvent(SetupEvent.onInputError,errorMessage);
-                }
+                Map<String, String> userMap2 = new HashMap<>();
+                userMap2.put("a_name", user_name);
+                //userMap2.put("b_nim" , user_nim);
+                userMap2.put("c_dormitory", user_dormitory);
+                userMap2.put("d_room", user_room);
+                userMap2.put("e_phone number", user_phone);
+                userMap2.put("g_gender", gender);
+                userMap2.put("f_status", status);
+                userMap2.put("token_id", token_id);
+
+                mFirestore.collection("Users").document(user_id)
+                        .set(userMap2).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+
+                            postEvent(SetupEvent.onInputSuccess);
+
+                        } else {
+                            String errorMessage = task.getException().getMessage();
+                            postEvent(SetupEvent.onInputError, errorMessage);
+                        }
+                    }
+                });
             }
         });
+
+
     }
 
     private void postEvent(int type, String errorMessage) {

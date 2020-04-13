@@ -6,6 +6,8 @@ public interface SetupViewMvp {
     void phoneFieldError(String error);
     void roomFieldError(String errorMsg);
     void dormitoryFieldError(String errorMsg);
+    void statusFieldError(String errorMsg);
+    void genderFieldError(String errorMsg);
     void nimFieldError(String errorMsg);
     void nameFieldError(String errorMsg);
     void confirmInput();

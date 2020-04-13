@@ -15,6 +15,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -216,6 +217,11 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
     @BindView(R.id.spreiBesarCard)
     CardView spreiBesarCard;
 
+    @BindView(R.id.confirmDeliverBtnRel)
+    RelativeLayout mConfirmDeliverRel;
+    @BindView(R.id.confirmPaidBtnRel)
+    RelativeLayout mConfirmPaidRel;
+
     @BindView(R.id.askAdminBtn)
     Button askAdminBtn;
     @BindView(R.id.confirmPaidBtn)
@@ -356,12 +362,12 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set title dialog
-        alertDialogBuilder.setTitle("Yakin udah dibayar lunas ?");
+        alertDialogBuilder.setTitle("Apakah anda yakin telah membayar ongkos laundry ?");
 
         // set pesan dari dialog
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("Siap udah", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol diklik, maka akan menutup activity ini
                         mOrderDetailPresenterMvp.validateUpdatePaid(order_id);
@@ -369,7 +375,7 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
                     }
                 })
-                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol ini diklik, akan menutup dialog
                         // dan tidak terjadi apa2
@@ -389,12 +395,12 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
         // set title dialog
-        alertDialogBuilder.setTitle("Yakin udah dianter sampe tujuan ?");
+        alertDialogBuilder.setTitle("Apakah anda yakin telah menerima pakaian anda kembali ?");
 
         // set pesan dari dialog
         alertDialogBuilder
                 .setCancelable(false)
-                .setPositiveButton("Siap udah", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Iya", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol diklik, maka akan menutup activity ini
                         mOrderDetailPresenterMvp.validateUpdateDeliver(order_id);
@@ -402,7 +408,7 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
                     }
                 })
-                .setNegativeButton("Eh iya belum", new DialogInterface.OnClickListener() {
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // jika tombol ini diklik, akan menutup dialog
                         // dan tidak terjadi apa2
@@ -434,11 +440,11 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         laundryWeight.setText(data);
     }
 
-    public void setLaundryPrice(String data) {
+    public void setTotalPriceTxt(String data) {
         laundryPrice.setText(data);
     }
 
-    public void setLaundryOriginalPrice(String data) {
+    public void setOriginalPriceTxt(String data) {
         originalPrice.setText(data);
     }
 
@@ -496,25 +502,25 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     public void setPaidBtnDisable() {
         confirmPaidBtn.setEnabled(false);
-        confirmPaidBtn.setBackgroundResource(R.drawable.btn_background_disable);
+        mConfirmPaidRel.setBackgroundResource(R.drawable.btn_background_disable);
         confirmPaidBtn.setTextColor(getResources().getColor(R.color.abuabu3));
     }
 
     public void setPaidBtnEnable() {
         confirmPaidBtn.setEnabled(true);
-        confirmPaidBtn.setBackgroundResource(R.drawable.btn_background_enable);
+        mConfirmPaidRel.setBackgroundResource(R.drawable.btn_background_enable);
         confirmPaidBtn.setTextColor(getResources().getColor(R.color.putih));
     }
 
     public void setDeliverBtnDisable() {
         confirmDeliverBtn.setEnabled(false);
-        confirmDeliverBtn.setBackgroundResource(R.drawable.btn_background_disable);
+        mConfirmDeliverRel.setBackgroundResource(R.drawable.btn_background_disable);
         confirmDeliverBtn.setTextColor(getResources().getColor(R.color.abuabu3));
     }
 
     public void setDeliverBtnEnable() {
         confirmDeliverBtn.setEnabled(true);
-        confirmDeliverBtn.setBackgroundResource(R.drawable.btn_background_enable);
+        mConfirmDeliverRel.setBackgroundResource(R.drawable.btn_background_enable);
         confirmDeliverBtn.setTextColor(getResources().getColor(R.color.putih));
     }
 

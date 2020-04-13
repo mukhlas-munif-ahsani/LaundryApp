@@ -21,11 +21,12 @@
         <item name="android:textSize">32sp</item>
     </style>
 
-    <style name="AppThemeDua" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppThemeDua" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/biruLaut</item>
         <item name="colorAccent">@color/biruLaut</item>
+        <item name="android:textSize">11sp</item>
     </style>
 
     <style name="RoundedCornerButton" parent="android:Widget.Material.Button">
@@ -38,5 +39,13 @@
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    </style>
+
+    <style name="LoginTextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/biruLaut</item>
+    </style>
+
+    <style name="LoginTextInputLayoutStyleExposedDropdownMenu" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="boxStrokeColor">@color/biruLaut</item>
     </style>
 </resources>

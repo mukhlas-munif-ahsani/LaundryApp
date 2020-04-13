@@ -94,7 +94,7 @@ public class BiasaPresenter implements BiasaPresenterMvp {
 
     @Override
     public void onDestroy() {
-        mBiasaViewMvp = null;
+        //mBiasaViewMvp = null;
         mEventBus.unregister(this);
     }
 

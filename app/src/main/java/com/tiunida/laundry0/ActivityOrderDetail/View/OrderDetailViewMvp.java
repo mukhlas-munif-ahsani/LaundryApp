@@ -20,9 +20,9 @@ public interface OrderDetailViewMvp {
 
     void setLaundryWeight(String data);
 
-    void setLaundryPrice(String data);
+    void setTotalPriceTxt(String data);
 
-    void setLaundryOriginalPrice(String data);
+    void setOriginalPriceTxt(String data);
 
     void setLaundryDiskon(String data);
 

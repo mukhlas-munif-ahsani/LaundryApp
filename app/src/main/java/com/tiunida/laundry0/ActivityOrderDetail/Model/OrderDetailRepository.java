@@ -9,6 +9,7 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -17,25 +18,31 @@ import com.tiunida.laundry0.EventBus.EventBus;
 import com.tiunida.laundry0.EventBus.GreenRobotEventBus;
 import com.tiunida.laundry0.ActivityOrderDetail.events.OrderDetailEvents;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
 public class OrderDetailRepository implements OrderDetailReposritoryMvp {
     private StorageReference storageReference;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth mAuth;
+    private FirebaseFirestore mFirestore;
     private String user_id;
+
+    private Calendar calendar;
+    private SimpleDateFormat dateFormat;
+    private String mNowTime;
 
     public OrderDetailRepository() {
         storageReference = FirebaseStorage.getInstance().getReference();
-        firebaseAuth = FirebaseAuth.getInstance();
-        user_id = firebaseAuth.getCurrentUser().getUid();
-        firebaseFirestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
+        user_id = mAuth.getCurrentUser().getUid();
+        mFirestore = FirebaseFirestore.getInstance();
     }
 
     @Override
     public void getUserData() {
-        firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        mFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -58,15 +65,52 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
         });
     }
 
+    public void getNowTime() {
+        calendar = Calendar.getInstance();
+        dateFormat = new SimpleDateFormat("EEE, d MMM, yyyy '|' HH:mm:ss");
+        mNowTime = dateFormat.format(calendar.getTime());
+    }
+
     @Override
     public void updatePaid(String order_id) {
         Map<String, Object> userMap2 = new HashMap<>();
         userMap2.put("h_paid2", "1");
 
-        firebaseFirestore.collection("Orders").document(order_id).update(userMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
+        getNowTime();
+
+        Map<String, Object> notificationsMessage = new HashMap<>();
+        notificationsMessage.put("order_id", order_id);
+        notificationsMessage.put("message_name", "Weighted");
+        notificationsMessage.put("message", "Konfirmasi telah dibayar");
+        notificationsMessage.put("from", user_id);
+        notificationsMessage.put("notif_time", mNowTime);
+
+        mFirestore.collection("Orders").document(order_id).update(userMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                postEvent(OrderDetailEvents.onUpdateDataSuccess);
+                mFirestore.collection("Orders").document(order_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            String user_id = task.getResult().getString("a_user_id");
+                            String accept = task.getResult().getString("h_accepted2");
+                            String onProses = task.getResult().getString("h_on_proses2");
+                            String done = task.getResult().getString("h_done2");
+                            String paid = task.getResult().getString("h_paid2");
+                            String paidConfirm = task.getResult().getString("h_paid2Confirm");
+                            String delivered = task.getResult().getString("h_delivered2");
+                            String deliveredConfirm = task.getResult().getString("h_delivered2Confirm");
+
+                            mFirestore.collection("Users").document("T5jCCL93vJPUUCxTUXlO42CpTln1").collection("Notifications").add(notificationsMessage).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    postEvent(OrderDetailEvents.onUpdateDataSuccess, accept, onProses, done, paid, paidConfirm, delivered, deliveredConfirm);
+                                }
+                            });
+                        }
+                    }
+                });
+//                postEvent(OrderDetailEvents.onUpdateDataSuccess);
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -81,10 +125,40 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
         Map<String, Object> userMap2 = new HashMap<>();
         userMap2.put("h_delivered2Confirm", "1");
 
-        firebaseFirestore.collection("Orders").document(order_id).update(userMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
+        getNowTime();
+
+        Map<String, Object> notificationsMessage = new HashMap<>();
+        notificationsMessage.put("order_id", order_id);
+        notificationsMessage.put("message_name", "Weighted");
+        notificationsMessage.put("message", "Pakaian telah diterima pelanggan");
+        notificationsMessage.put("from", user_id);
+        notificationsMessage.put("notif_time", mNowTime);
+
+        mFirestore.collection("Orders").document(order_id).update(userMap2).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {
-                postEvent(OrderDetailEvents.onUpdateDataSuccess);
+                mFirestore.collection("Orders").document(order_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if (task.isSuccessful()) {
+                            String user_id = task.getResult().getString("a_user_id");
+                            String accept = task.getResult().getString("h_accepted2");
+                            String onProses = task.getResult().getString("h_on_proses2");
+                            String done = task.getResult().getString("h_done2");
+                            String paid = task.getResult().getString("h_paid2");
+                            String paidConfirm = task.getResult().getString("h_paid2Confirm");
+                            String delivered = task.getResult().getString("h_delivered2");
+                            String deliveredConfirm = task.getResult().getString("h_delivered2Confirm");
+
+                            mFirestore.collection("Users").document("T5jCCL93vJPUUCxTUXlO42CpTln1").collection("Notifications").add(notificationsMessage).addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                @Override
+                                public void onSuccess(DocumentReference documentReference) {
+                                    postEvent(OrderDetailEvents.onUpdateDataSuccess, accept, onProses, done, paid, paidConfirm, delivered, deliveredConfirm);
+                                }
+                            });
+                        }
+                    }
+                });
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -96,7 +170,7 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
 
     @Override
     public void getOrdersData(String order_id) {
-        firebaseFirestore.collection("Orders").document(order_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        mFirestore.collection("Orders").document(order_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -250,6 +324,10 @@ public class OrderDetailRepository implements OrderDetailReposritoryMvp {
 
         EventBus eventBus = GreenRobotEventBus.getInstance();
         eventBus.post(orderDetailEvents);
+    }
+
+    public void postEvent(int type, String dataAccept, String dataOnProses, String dataDone, String dataPaid, String dataPaidConfirm, String delivered, String deliveredConfirm) {
+        postEvent(type, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, dataAccept, dataOnProses, dataDone, dataPaid, dataPaidConfirm, delivered, deliveredConfirm);
     }
 
     @Override

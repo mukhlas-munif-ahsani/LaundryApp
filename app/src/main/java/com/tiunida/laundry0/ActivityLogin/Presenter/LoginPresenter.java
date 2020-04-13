@@ -27,8 +27,6 @@ public class LoginPresenter implements LoginPresenterMvp {
     private LoginMvpView mLoginMvpView;
     private LoginInteractorMvp mLoginInteractorMvp;
 
-
-
     public LoginPresenter(LoginMvpView loginMvpView) {
         mLoginMvpView = loginMvpView;
         mLoginInteractorMvp = new LoginInteractor();
@@ -36,6 +34,13 @@ public class LoginPresenter implements LoginPresenterMvp {
 //        this.mContect = mContect;
 //        this.mAuth = mAuth;
 //        this.mDatabase = mDatabase;
+    }
+
+    public LoginPresenter(LoginMvpView view, LoginInteractorMvp repository) {
+        this.mLoginMvpView = view;
+        this.mLoginInteractorMvp = repository;
+
+        this.mLoginMvpView.setPresenter(this);
     }
 
     @Override
@@ -48,58 +53,6 @@ public class LoginPresenter implements LoginPresenterMvp {
         mLoginMvpView = null;
         mEventBus.unregister(this);
     }
-//    @Override
-//    public boolean isValidForm(String email, String password){
-//        boolean isValid = true;
-//        if (email.isEmpty()) {
-//            //String errorMessage = task.getException().getMessage();
-//            isValid = false;
-//            Toast.makeText(mContect,"email kosong" , Toast.LENGTH_LONG).show();
-////            return;
-//        }
-//        if (!isEmailValid(email)) {
-//            isValid = false;
-//            Toast.makeText(mContect,"email ga valid" , Toast.LENGTH_LONG).show();
-////            return;
-//        }
-//        if (password.isEmpty()) {
-//            isValid = false;
-//            Toast.makeText(mContect,"pass kosong" , Toast.LENGTH_LONG).show();
-////            return;
-//        }
-//        return isValid;
-
-//        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
-//            final ProgressDialog dialog = new ProgressDialog(mContect);
-//            dialog.setMessage("loding");
-//            dialog.setCancelable(false);
-//            dialog.show();
-//
-//            mAuth.signInWithEmailAndPassword(email, password)
-//                    .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<AuthResult> task) {
-//                            if (task.isSuccessful()) {
-//                                // Sign in success, update UI with the signed-in user's information
-//                                Log.d(TAG, "signInWithEmail:success");
-//                                dialog.dismiss();
-//                                //mLoginActivity.hideProgress();
-//                                Intent intent = new Intent(mContect, MainActivity.class);
-//                                mContect.startActivity(intent);
-//                            } else {
-//                                dialog.dismiss();
-//                                // If sign in fails, display a message to the user.
-//                                Log.w(TAG, "signInWithEmail:failure", task.getException());
-//                                Toast.makeText(mContect, "email atau password anda tidak sesuai",
-//                                        Toast.LENGTH_SHORT).show();
-//                            }
-//
-//                            // ...
-//                        }
-//                    });
-//        }
-
-//    }
 
     @Override
     @Subscribe

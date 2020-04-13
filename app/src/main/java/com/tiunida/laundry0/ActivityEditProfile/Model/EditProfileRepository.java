@@ -29,16 +29,12 @@ public class EditProfileRepository implements EditProfileRepositoryMvp {
     }
 
     public void getProfileData(){
-        Log.d("repo : ", "masuk");
         firebaseFirestore.collection("Users").document(user_id).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                Log.d("repo onComplete : ", "masuk");
                 if (task.isSuccessful()){
-                    Log.d("repo onComplete suc:", "masuk");
 
                     if (task.getResult().exists()){
-//                        Toast.makeText(SetupActivity.this,"datanya ada " , Toast.LENGTH_LONG).show();
                         String name = task.getResult().getString("a_name");
                         //String nim = task.getResult().getString("b_nim");
                         String room = task.getResult().getString("d_room");
@@ -48,7 +44,6 @@ public class EditProfileRepository implements EditProfileRepositoryMvp {
                         String gender = task.getResult().getString("g_gender");
                         String status = task.getResult().getString("f_status");
 
-                        Log.d("data dapat","masuk" + name);
                         postEvent(EditProfileEvent.onGetDataSuccess,null, name,dormitory,room,phone,gender,status);
 
                     }
@@ -56,7 +51,6 @@ public class EditProfileRepository implements EditProfileRepositoryMvp {
                 } else {
                     String errorMessage = task.getException().getMessage();
                     postEvent(EditProfileEvent.onGetDataError,errorMessage);
-//                    Toast.makeText(getActivity(),"FIRESTORE retrivew Error :" + errorMessage, Toast.LENGTH_LONG).show();
                 }
             }
         });
