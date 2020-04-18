@@ -34,6 +34,7 @@
     <string name="tiga_titik">...</string>
     <string name="tulis_catatan">Tulis Catatan</string>
     <string name="default_notification_channel_id">Asan_CH_01</string>
+    <string name="default_notification_channel_name">LaundryApp</string>
 
     <integer name="btn_plus_view">1</integer>
     <integer name="btn_plus_pos">2</integer>

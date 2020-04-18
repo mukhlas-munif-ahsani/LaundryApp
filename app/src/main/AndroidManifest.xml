@@ -15,20 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeDua">
         <activity android:name=".TestActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter>
         </activity>
         <activity android:name=".ActivitySyaratKetentuan.View.SyaratKetentuanActivity" />
         <activity android:name=".ActivityHubungi.View.HubungiActivity" />
         <activity android:name=".ActivitySaran.View.SaranActivity" />
         <activity android:name=".ActivityTentangAplikasi.View.TentangAppActivity" />
         <activity android:name=".XsetupImage.SetupImageActivity" />
-        <activity android:name=".ActivityOrderDetail.View.OrderDetailActivity">
 
+        <activity android:name=".ActivityOrderDetail.View.OrderDetailActivity">
+            <intent-filter>
+                <action android:name="OPEN_ACTIVITY_DETAIL" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
         </activity>
+
         <activity
             android:name=".ActivitySplashScreen.SplashScreenActivity"
             android:label="@string/app_name"
@@ -57,9 +57,11 @@
 
         <service
             android:name=".FirebseMessagingService.FirebaseMessagingService"
+            android:permission="com.google.android.c2dm.permission.SEND"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
 

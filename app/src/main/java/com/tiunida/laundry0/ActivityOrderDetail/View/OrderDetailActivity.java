@@ -1,17 +1,12 @@
 package com.tiunida.laundry0.ActivityOrderDetail.View;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.cardview.widget.CardView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -19,9 +14,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tiunida.laundry0.R;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import com.tiunida.laundry0.ActivityOrderDetail.Presenter.OrderDetailPresenter;
 import com.tiunida.laundry0.ActivityOrderDetail.Presenter.OrderDetailPresenterMvp;
+import com.tiunida.laundry0.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -246,8 +247,14 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
         ButterKnife.bind(this);
 
-        Intent orderDetailIntent = getIntent();
-        order_id = orderDetailIntent.getStringExtra("id");
+        String message = getIntent().getStringExtra("message");
+        String from_user = getIntent().getStringExtra("from_user_id");
+        order_id = getIntent().getStringExtra("order_id");
+
+        Log.e("OrderDetailAcitivty", "message: " + message);
+        Log.e("OrderDetailAcitivty", "from_user: " + from_user);
+        Log.e("OrderDetailAcitivty", "orderId: " + order_id);
+
 
         //Toast.makeText(OrderDetailActivity.this, "order id " + order_id, Toast.LENGTH_LONG).show();
 
@@ -270,7 +277,7 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         });
 
         // Mengeset properti warna yang berputar pada SwipeRefreshLayout
-        swLayout.setColorSchemeResources(R.color.biruLaut,R.color.biruGelap);
+        swLayout.setColorSchemeResources(R.color.biruLaut, R.color.biruGelap);
 
         // Mengeset listener yang akan dijalankan saat layar di refresh/swipe
         swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -281,7 +288,8 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
                 Toast.makeText(OrderDetailActivity.this, "Refresh", Toast.LENGTH_SHORT).show();
                 // Handler untuk menjalankan jeda selama 5 detik
                 new Handler().postDelayed(new Runnable() {
-                    @Override public void run() {
+                    @Override
+                    public void run() {
                         // Berhenti berputar/refreshing
                         swLayout.setRefreshing(false);
 
@@ -306,14 +314,14 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
 
     private void openWhatsApp() {
         String smsNumber = "6282301198226"; // E164 format without '+' sign
-        PackageManager pm=getPackageManager();
+        PackageManager pm = getPackageManager();
         try {
 
             Intent waIntent = new Intent(Intent.ACTION_SEND);
             waIntent.setType("text/plain");
             String text = "Assalamualaikum...";
 
-            PackageInfo info=pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
+            PackageInfo info = pm.getPackageInfo("com.whatsapp", PackageManager.GET_META_DATA);
             //Check if package exists or not. If not then code
             //in catch block will be called
             waIntent.setPackage("com.whatsapp");
@@ -332,29 +340,29 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         mOrderDetailPresenterMvp.getOrderData(order_id);
     }
 
-    public void hideProgress(){
+    public void hideProgress() {
         progressBar.setVisibility(View.GONE);
     }
 
-    public void showProgress(){
+    public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }
 
-    public void setAskAdminBtnEnable(){
+    public void setAskAdminBtnEnable() {
         askAdminBtn.setEnabled(true);
     }
 
-    public void setAskAdminBtnDisable(){
+    public void setAskAdminBtnDisable() {
         askAdminBtn.setEnabled(false);
     }
 
     @OnClick(R.id.confirmPaidBtn)
-    public void onPaidBtnOnClick(){
+    public void onPaidBtnOnClick() {
         showDialogOnPaidOkBtnOnClick();
     }
 
     @OnClick(R.id.confirmDeliverBtn)
-    public void onDeliverOnClick(){
+    public void onDeliverOnClick() {
         showDialogOnDeliverOkBtnOnClick();
     }
 
@@ -524,11 +532,11 @@ public class OrderDetailActivity extends AppCompatActivity implements OrderDetai
         confirmDeliverBtn.setTextColor(getResources().getColor(R.color.putih));
     }
 
-    public void setConfirmPaidBtnTxt(String txt){
+    public void setConfirmPaidBtnTxt(String txt) {
         confirmPaidBtn.setText(txt);
     }
 
-    public void setConfirmDeliverBtnTxt(String txt){
+    public void setConfirmDeliverBtnTxt(String txt) {
         confirmDeliverBtn.setText(txt);
     }
 

@@ -66,7 +66,7 @@ public class HistoryFragment extends Fragment {
                 //Toast.makeText(getActivity(), "posisi : " + position + " id : " + id, Toast.LENGTH_LONG).show();
 
                 Intent orderDetailIntent = new Intent(getView().getContext(), OrderDetailActivity.class);
-                orderDetailIntent.putExtra("id",id);
+                orderDetailIntent.putExtra("order_id", id);
                 startActivity(orderDetailIntent);
 
             }
